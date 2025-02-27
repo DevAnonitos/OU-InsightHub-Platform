@@ -45,7 +45,7 @@ export function AppSidebar() {
     <Sidebar className="border-r-[1px]">
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>OU INSIGHT HUB</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

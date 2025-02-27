@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  crossOriginOrigin: "anonymous",
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+  },
+  expireTime: 3600,
 };
 
 export default nextConfig;
