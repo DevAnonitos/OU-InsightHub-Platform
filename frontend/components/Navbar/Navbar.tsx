@@ -1,5 +1,5 @@
 import React from 'react';
-import { SidebarTrigger } from '../ui/sidebar';
+import { SidebarTrigger } from '../ui/sidebar'; 
 
 const Navbar = () => {
   return (
