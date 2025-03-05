@@ -44,9 +44,9 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader>
-        OU Insight Hub
+        
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -68,7 +68,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        Account
+        
       </SidebarFooter>
     </Sidebar>
   )
