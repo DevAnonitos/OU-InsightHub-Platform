@@ -13,4 +13,4 @@ const nextConfig = {
   // crossOrigin: 'use-credentials',
 };
 
-export default nextConfig;
+export default nextConfig;  

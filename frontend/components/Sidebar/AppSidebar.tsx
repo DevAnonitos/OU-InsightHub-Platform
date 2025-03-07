@@ -12,6 +12,7 @@ import {
   SidebarHeader,
   SidebarFooter,
 } from "@/components/ui/sidebar"
+import ProfileUser from "../Shared/ProfileUser"
 
 // Menu items.
 const items = [
@@ -45,8 +46,16 @@ const items = [
 export function AppSidebar() {
   return (
     <Sidebar collapsible="icon">
-      <SidebarHeader>
-        
+      <SidebarHeader className="flex flex-col items-center justify-center py-4 px-2">
+        <div className="flex items-center gap-3 w-full px-2 py-2 rounded-lg bg-primary/5 border-gray-300 border">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
+            <span className="text-lg font-bold">OU</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold leading-none">OU Insight Hub</span>
+            <span className="text-xs text-muted-foreground">Knowledge Portal</span>
+          </div>
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
@@ -68,7 +77,7 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        
+        <ProfileUser />
       </SidebarFooter>
     </Sidebar>
   )

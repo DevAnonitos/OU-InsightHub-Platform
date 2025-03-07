@@ -1,15 +1,18 @@
+import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
-import { Inter } from 'next/font/google';
 
-export const metadata: Metadata = {
-  title: 'OU Insight Hub',
+const inter = Inter({
+  subsets: ['latin'],
+  weight: '400',
+});
+
+export const metadata: Metadata = { 
+  title: 'OU Insight Hub - Admin Dashboard',
   description: '',
 };
 
-const inter = Inter({ subsets: ['latin'] });
-
-export default function AuthLayout ({
+export default function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -17,7 +20,7 @@ export default function AuthLayout ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main>
+        <main className="">
           {children}
         </main>
       </body>
