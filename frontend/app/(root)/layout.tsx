@@ -32,7 +32,6 @@ export default function RootLayout({
               <SidebarTrigger />
               <Navbar />
               {children}
-              <Bottombar />
             </main>
           </SidebarProvider>
         </QueryProvider>

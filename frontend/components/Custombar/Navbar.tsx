@@ -9,7 +9,7 @@ const Navbar = () => {
       <SidebarTrigger />
       <div className='flex items-center justify-between w-full'>
         <Searchbar />
-        <div className='flex-1 items-center justify-between space-x-4'>
+        <div className='flex items-center space-x-4'>
           <Button variant="outline">Create a account</Button>
           <Button>Login</Button>
         </div>
