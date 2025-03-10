@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
+import QueryProvider from '@/components/Providers/QueryProvider';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -20,9 +21,11 @@ export default function AdminLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="">
-          {children}
-        </main>
+        <QueryProvider>
+          <main className="">
+            {children}
+          </main>
+        </QueryProvider>
       </body>
     </html>
   );

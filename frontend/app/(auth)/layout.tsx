@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../globals.css';
 import { Inter } from 'next/font/google';
+import QueryProvider from '@/components/Providers/QueryProvider';
 
 export const metadata: Metadata = {
   title: 'OU Insight Hub',
@@ -17,9 +18,11 @@ export default function AuthLayout ({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main>
-          {children}
-        </main>
+        <QueryProvider>
+          <main>
+            {children}
+          </main>
+        </QueryProvider>
       </body>
     </html>
   );

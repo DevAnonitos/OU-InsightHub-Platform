@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import "../globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/Sidebar/AppSidebar";
+import { AppSidebar } from "@/components/Custombar/AppSidebar";
 import Navbar from "@/components/Custombar/Navbar";
 import Bottombar from "@/components/Custombar/Bottombar";
+
+import QueryProvider from "@/components/Providers/QueryProvider";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,15 +25,17 @@ export default function RootLayout({
       <body
         className={`${inter.className} antialiased`}
       >
-        <SidebarProvider>
-          <AppSidebar />
-          <main className="flex w-full flex-col h-screen">
-            <SidebarTrigger />
-            <Navbar />
-            {children}
-            <Bottombar />
-          </main>
-        </SidebarProvider>
+        <QueryProvider>
+          <SidebarProvider>
+            <AppSidebar />
+            <main className="flex w-full flex-col h-screen">
+              <SidebarTrigger />
+              <Navbar />
+              {children}
+              <Bottombar />
+            </main>
+          </SidebarProvider>
+        </QueryProvider>
       </body>
     </html>
   );

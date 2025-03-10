@@ -45,7 +45,7 @@ const items = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar>
       <SidebarHeader className="flex flex-col items-center justify-center py-4 px-2">
         <div className="flex items-center gap-3 w-full px-2 py-2 rounded-lg bg-primary/5 border-gray-300 border">
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
