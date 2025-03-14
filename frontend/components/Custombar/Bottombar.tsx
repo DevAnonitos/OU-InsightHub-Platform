@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 
 const Bottombar = () => {
   return (
-    <div className='flex w-full border-t-[1px] h-16 bg-white z-10'>
+    <div className='flex w-full border-t-[1px] fixed bottom-0 border-gray-200 h-16 bg-white z-10'>
       Bottombar
     </div>
   );

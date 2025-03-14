@@ -21,21 +21,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${inter.className} antialiased`}
       >
         <QueryProvider>
           <SidebarProvider>
-            <AppSidebar />
-            <main className="flex w-full flex-col h-screen">
-              <SidebarTrigger />
-              <Navbar />
-              {children}
-            </main>
+            <div className="flex h-screen">
+              <AppSidebar />
+              <div className="flex-1 flex flex-col overflow-hidden">
+                <Navbar />
+                  <main className="flex p-6 pt-16 bg-background">
+                    {children}
+                  </main>
+                <Bottombar />
+              </div>
+            </div>
           </SidebarProvider>
         </QueryProvider>
       </body>
     </html>
   );
-}
+};
