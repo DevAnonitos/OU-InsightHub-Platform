@@ -7,7 +7,7 @@ import { SidebarInset } from '../ui/sidebar';
 const Navbar = () => {
   return (
     <SidebarInset>
-      <div className='flex w-full flex-shrink-0 items-center justify-between border-b-[1px] h-16 fixed top-0 bg-white z-10'>
+      <div className='sticky w-full shrink-0 top-0 left-0 right-0 p-3 flex items-center justify-between z-50 h-16 border-b-[1px] font-semibold bg-white'>
         <SidebarTrigger />
         <div className='flex items-center justify-between w-full'>
           <Searchbar />

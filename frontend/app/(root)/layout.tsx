@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import "../globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/Custombar/AppSidebar";
 import Navbar from "@/components/Custombar/Navbar";
 import Bottombar from "@/components/Custombar/Bottombar";
@@ -26,18 +26,22 @@ export default function RootLayout({
         className={`${inter.className} antialiased`}
       >
         <QueryProvider>
-          <SidebarProvider>
-            <div className="flex h-screen">
-              <AppSidebar />
-              <div className="flex-1 flex flex-col overflow-hidden">
-                <Navbar />
-                  <main className="flex p-6 pt-16 bg-background">
-                    {children}
-                  </main>
-                <Bottombar />
-              </div>
+          <div className="flex w-full h-full flex-col">
+            <div className="relative flex h-full w-full flex-1 overflow-hidden transition-colors z-0">
+              <SidebarProvider>
+                <AppSidebar />
+                <div className="relative flex h-full max-w-full flex-1 flex-col">
+                  <div className=" relative flex-1 flex flex-col overflow-hidden">
+                      <Navbar />
+                        <main className="flex p-6 bg-background">
+                          {children}
+                        </main>
+                      <Bottombar />
+                  </div>
+                </div>
+              </SidebarProvider>
             </div>
-          </SidebarProvider>
+          </div>
         </QueryProvider>
       </body>
     </html>
