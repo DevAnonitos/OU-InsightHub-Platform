@@ -1,0 +1,4 @@
+services:
+  prometheus:
+  node-exporter:
+  grafana:
