@@ -1,8 +1,11 @@
 import React from 'react';
+import { Loader } from 'lucide-react';
 
 const LoaderSpinner = () => {
   return (
-    <div>LoaderSpinner</div>
+    <div>
+      <Loader />
+    </div>
   );
 };
 

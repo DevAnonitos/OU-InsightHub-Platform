@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginAccount } from '@/lib/actions/auth';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
@@ -33,7 +34,7 @@ const SignInForm = () => {
   })
 
   return (
-    <Card className='w-full max-w-md'>
+    <Card className='w-full max-w-md border border-gray-300'>
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl font-bold">
           Welcome back OU Insight Hub
@@ -43,7 +44,7 @@ const SignInForm = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Button type='button' className='w-ful cursor-pointer' variant="outline">
+        <Button type='button' className='w-full cursor-pointer border border-gray-300' variant="outline">
           <svg
             className="mr-2 h-4 w-4"
             aria-hidden="true"
@@ -76,19 +77,21 @@ const SignInForm = () => {
         <Form {...form}>
           <form className='space-y-4'>
             <FormField
+              aria-label="Email"
               control={form.control}
               name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="name@example.com" type="email" {...field} />
+                    <Input placeholder="name@gmail.com" type="email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
             <FormField
+              aria-label="Password"
               control={form.control}
               name="password"
               render={({ field }) => (
@@ -114,9 +117,9 @@ const SignInForm = () => {
                   </FormItem>
                 )}
               />
-              <Button variant="link" className="px-0 font-normal">
+              <Link href="/forgot-password" className="px-0 font-normal text-sm">
                 Forgot password?
-              </Button>
+              </Link>
             </div>
             <Button type="submit" className="w-full cursor-pointer">
                 Sign in
@@ -127,7 +130,9 @@ const SignInForm = () => {
       <CardFooter className="flex flex-wrap items-center justify-center gap-1">
         <div className="text-sm text-muted-foreground">Don&apos;t have an account?</div>
         <Button variant="link" className="px-2 text-sm">
-          Create an account
+          <Link href="/sign-up">
+            Create an account 
+          </Link>
         </Button>
       </CardFooter>
     </Card>
