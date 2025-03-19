@@ -71,7 +71,7 @@ export default function CategoriesSection() {
 
   return (
     <section className="w-full py-16 md:py-24 lg:py-32 bg-white dark:bg-slate-950">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

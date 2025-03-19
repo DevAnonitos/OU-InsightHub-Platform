@@ -1,2 +1,3 @@
-export const SIGNIN_ENPOINT = ``;
-export const SIGNUP_ENDPOINT = ``;
+export const SIGNIN_ENDPOINT = `/api/v1/auth/signin`;
+export const SIGNUP_ENDPOINT = `/api/v1/auth/signup`;
+export const LOGOUT_ENDPOINT = `/api/v1/auth/logout`;

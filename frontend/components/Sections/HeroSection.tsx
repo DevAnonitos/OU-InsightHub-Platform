@@ -16,8 +16,8 @@ export default function HeroSection() {
 
   return (
     <section className="w-full overflow-hidden bg-white dark:bg-slate-950 py-12 md:py-16 lg:py-20">
-      <div className="container px-4 md:px-6">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+      <div className="container px-4 md:px-6 w-full mx-auto">
+        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center w-full">
           {/* Left Column - Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

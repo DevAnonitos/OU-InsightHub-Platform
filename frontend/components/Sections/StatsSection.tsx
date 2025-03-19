@@ -68,7 +68,7 @@ export default function StatsSection() {
       ref={ref}
       className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900"
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}

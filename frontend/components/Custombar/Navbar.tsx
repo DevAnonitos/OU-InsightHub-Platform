@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { SidebarTrigger } from "../ui/sidebar";
 import { Button } from "../ui/button";
@@ -7,8 +9,8 @@ import Link from "next/link"
 
 const Navbar = () => {
   return (
-    <SidebarInset>
-      <div className="sticky w-full shrink-0 top-0 left-0 right-0 p-6 flex items-center justify-between z-50 h-16 border-b border-gray-300 font-semibold bg-white">
+    // <SidebarInset>
+      <div className="sticky w-full shrink-0 top-0 left-0 right-0 p-6 flex items-center justify-between z-50 h-16 border-b border-gray-300 font-semibold bg-white bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <SidebarTrigger />
         <div className="flex items-center justify-between w-full">
           <Searchbar />
@@ -26,7 +28,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </SidebarInset>
+    // </SidebarInset>
   );
 };
 

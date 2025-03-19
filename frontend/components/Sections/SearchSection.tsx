@@ -18,7 +18,7 @@ export default function SearchHeroSection() {
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 bg-white dark:bg-slate-950">
-      <div className="container px-4 md:px-6">
+      <div className="container px-4 md:px-6 w-full mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -1,34 +1,34 @@
 import {
-    BookOpen,
-    Calendar,
-    Database,
-    FileText,
-    Folders,
-    GraduationCap,
-    Home,
-    MessageSquare,
-    PieChart,
-    Share2,
-    Users,
-    Zap,
-  } from "lucide-react"
+  BookOpen,
+  Calendar,
+  Database,
+  FileText,
+  Folders,
+  GraduationCap,
+  Home,
+  MessageSquare,
+  PieChart,
+  Share2,
+  Users,
+  Zap,
+} from "lucide-react";
   
-  import type { MenuSection } from "@/types/sidebar"
+import type { MenuSection } from "@/types/sidebar";
   
-  // About OU section
-  export const aboutOUItems: MenuSection = {
+// About OU section
+export const aboutOUItems: MenuSection = {
     id: "about",
     label: "OU Flatform",
     items: [
       {
         title: "Overview",
-        url: "/about",
+        url: "/about-ou",
         icon: Home,
-        description: "About the University of Oklahoma",
+        description: "About the HCMOU",
       },
       {
         title: "Faculty & Staff",
-        url: "/about/faculty",
+        url: "/about-ou/faculties",
         icon: Users,
         description: "Faculty and staff directory",
         items: [
@@ -152,10 +152,10 @@ import {
         ],
       },
     ],
-  }
+}
   
-  // Research section
-  export const researchItems: MenuSection = {
+// Research section
+export const researchItems: MenuSection = {
     id: "research",
     label: "Research & Insights",
     items: [
@@ -224,10 +224,10 @@ import {
         ],
       },
     ],
-  }
+};
   
-  // Resources section
-  export const resourceItems: MenuSection = {
+// Resources section
+export const resourceItems: MenuSection = {
     id: "resources",
     label: "Resources",
     items: [
@@ -286,10 +286,10 @@ import {
         ],
       },
     ],
-  }
+};
   
-  // Collaboration section
-  export const collaborationItems: MenuSection = {
+// Collaboration section
+export const collaborationItems: MenuSection = {
     id: "collaboration",
     label: "Collaboration",
     items: [
@@ -366,17 +366,22 @@ import {
         ],
       },
     ],
-  }
+};
   
-  // All menu sections
-  export const menuSections: MenuSection[] = [aboutOUItems, researchItems, resourceItems, collaborationItems]
+// All menu sections
+export const menuSections: MenuSection[] = [
+  aboutOUItems, 
+  researchItems, 
+  resourceItems, 
+  collaborationItems
+];
   
   // Default open sections
-  export const defaultOpenSections: Record<string, boolean> = {
-    about: true,
-    research: true,
-    resources: false,
-    collaboration: false,
-  }
+export const defaultOpenSections: Record<string, boolean> = {
+  about: true,
+  research: true,
+  resources: false,
+  collaboration: false,
+};
   
   

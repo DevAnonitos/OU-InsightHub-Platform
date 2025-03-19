@@ -11,7 +11,7 @@ const Bottombar = () => {
 
   return (
     <div className="w-full border-t border-gray-300 bg-background py-6">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-3">
@@ -55,7 +55,7 @@ const Bottombar = () => {
             <h3 className="font-semibold text-lg">Quick Links</h3>
             <div className="space-y-2 text-sm">
               <div>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground">
+                <Link href="/about-us" className="text-muted-foreground hover:text-foreground">
                   About Us
                 </Link>
               </div>
@@ -124,7 +124,7 @@ const Bottombar = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
           <p>© {currentYear} OU Insight Hub. All rights reserved.</p>
-          <p className="mt-2 md:mt-0">Designed and developed with ❤️</p>
+          <p className="mt-2 md:mt-0">Designed and developed with DevAnonitos ❤️</p>
         </div>
       </div>
     </div>

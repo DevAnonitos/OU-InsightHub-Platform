@@ -19,7 +19,7 @@ import ProfileUser from "../Shared/ProfileUser"
 
 export function AppSidebar() {
   return (
-    <Sidebar>
+    <Sidebar className="bg-white">
       <SidebarHeader className="flex flex-col items-center justify-center py-4 px-2">
         <Link
           href="/"
@@ -61,13 +61,9 @@ export function AppSidebar() {
           </Button>
         </SidebarGroup>
       </SidebarContent>
-
-      <SidebarSeparator />
-
       <SidebarFooter className="p-4">
         <ProfileUser />
       </SidebarFooter>
-
       <SidebarRail />
     </Sidebar>
   );

@@ -1,8 +1,13 @@
+"use client";
+
 import React from 'react';
+
 
 const SearchPage = () => {
   return (
-    <div>page</div>
+    <div className='relative w-full h-full'>
+      
+    </div>
   );
 };
 

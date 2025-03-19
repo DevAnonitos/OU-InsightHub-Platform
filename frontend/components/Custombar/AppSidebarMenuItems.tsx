@@ -45,9 +45,14 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
               {item.items ? (
                 <Collapsible className="w-full">
                   <div className="flex w-full transition-all ease-out">
-                    <SidebarMenuButton asChild isActive={isActive(item.url)} className="flex-1 pr-0 rounded-r-none transition-all ease-out">
+                    <SidebarMenuButton 
+                      asChild isActive={isActive(item.url)} 
+                      className="flex-1 pr-0 rounded-r-none transition-all ease-out"
+                    >
                       <Link
+                        prefetch={true}
                         href={item.url}
+                        scroll = {false}
                         aria-label={item.description || item.title}
                         title={item.description || item.title}
                       >
@@ -78,6 +83,8 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
                             className={isActive(subItem.url) ? "bg-accent font-medium transition-all ease-out" : ""}
                           >
                             <Link
+                              prefetch={true}
+                              scroll = {false}
                               href={subItem.url}
                               aria-label={subItem.description || subItem.title}
                               title={subItem.description || subItem.title}
@@ -97,6 +104,8 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
                   className={isActive(item.url) ? "bg-accent font-medium" : ""}
                 >
                   <Link
+                    prefetch={true}
+                    scroll = {false}
                     href={item.url}
                     aria-label={item.description || item.title}
                     title={item.description || item.title}
@@ -111,6 +120,6 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
         </SidebarMenu>
       </SidebarGroupContent>
     </SidebarGroup>
-  )
-}
+  );
+};
 

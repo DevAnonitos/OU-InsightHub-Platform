@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function AboutUsPage() {
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container flex flex-col w-full h-full mx-auto px-4 py-12">
       {/* Hero Section */}
       <section className="flex flex-col items-center text-center mb-16">
         <div className="relative w-24 h-24 mb-6">
