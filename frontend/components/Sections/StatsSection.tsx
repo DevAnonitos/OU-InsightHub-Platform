@@ -4,7 +4,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { BookOpen, Users, GraduationCap, Award } from "lucide-react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { Badge } from "../ui/badge"
 
 // CountUp component for animating numbers
 const CountUp = ({ end, duration = 2000 }: { end: number; duration?: number }) => {
@@ -75,9 +76,13 @@ export default function StatsSection() {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
         >
-          <div className="inline-flex items-center rounded-full border border-blue-600/20 bg-blue-100/10 px-3 py-1 text-sm text-blue-600 dark:text-blue-400 dark:bg-blue-400/10 dark:border-blue-400/20">
-            <span className="mr-1 h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-400"></span> Our Impact
-          </div>
+          <Badge
+            variant="outline"
+            className="w-fit bg-blue-50 text-blue-600 border-blue-200 hover:bg-blue-100 dark:bg-blue-950/30 dark:text-blue-400 dark:border-blue-800/50 px-3 py-1"
+          >
+            <div className="mr-1 h-2 w-2 rounded-full bg-blue-500"></div>
+            <span className="ml-1">Our impacts</span>
+          </Badge>
           <div className="space-y-2 max-w-3xl">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-slate-900 dark:text-white">
               OU Insight Hub by the Numbers

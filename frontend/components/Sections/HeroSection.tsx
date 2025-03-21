@@ -35,12 +35,12 @@ export default function HeroSection() {
 
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl">
-                <span className="block">OU Insight</span>
-                <span className="block text-blue-600 dark:text-blue-500">Research Hub</span>
+                <span className="block">OU Insight Hub</span>
+                <span className="block text-blue-600 dark:text-blue-500">Research Platform</span>
               </h1>
 
               <p className="text-lg text-slate-600 dark:text-slate-400 max-w-[600px]">
-                Access comprehensive academic resources, research insights, and campus information all in one place.
+                Access comprehensive Ho Chi Minh University resources, research insights, and campus information all in one place.
               </p>
             </div>
 
@@ -142,7 +142,7 @@ export default function HeroSection() {
                 <Image
                   src="/assets/image.png"
                   width={800}
-                  height={600}
+                  height={800}
                   alt="OU Insight Hub Dashboard"
                   className="w-full h-auto object-cover"
                   priority

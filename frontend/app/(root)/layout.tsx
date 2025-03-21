@@ -28,7 +28,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   <div className="relative flex h-full max-w-full flex-1 flex-col">
                     <div className="relative flex-1 flex flex-col transition-[width,height] ease-linear">
                       <Navbar />
-                      <main className="flex w-full h-full p-6 bg-background overflow-y-auto">
+                      <main className="flex w-full h-full p-6 bg-background">
                         {children}
                       </main>
                       <Bottombar />

@@ -23,7 +23,7 @@ export function AppSidebar() {
       <SidebarHeader className="flex flex-col items-center justify-center py-4 px-2">
         <Link
           href="/"
-          className="flex items-center gap-3 w-full px-2 py-2 rounded-lg hover:bg-primary/5 transition-colors"
+          className="flex items-center gap-3 w-full px-2 py-2 rounded-lg transition-colors bg-gray-200"
           aria-label="OU Insight Hub - Return to home page"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">

@@ -3,32 +3,36 @@
 import React from "react";
 import { SidebarTrigger } from "../ui/sidebar";
 import { Button } from "../ui/button";
-import Searchbar from "../Shared/Searchbar";
-import { SidebarInset } from "../ui/sidebar";
-import Link from "next/link"
+import Link from "next/link";
+import Breadcrumb from "../Shared/Breadcrumb";
 
 const Navbar = () => {
   return (
-    // <SidebarInset>
-      <div className="sticky w-full shrink-0 top-0 left-0 right-0 p-6 flex items-center justify-between z-50 h-16 border-b border-gray-300 font-semibold bg-white bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <SidebarTrigger />
-        <div className="flex items-center justify-between w-full">
-          <Searchbar />
-          <div className="flex items-center space-x-4">
-            <Button variant="outline">
-              <Link href="/sign-up">
-                Create a account
-              </Link>
-            </Button>
-            <Button>
-              <Link href="/sign-in">
-                Login
-              </Link>
-            </Button>
-          </div>
+      <header
+        className="
+          sticky top-0 left-0 right-0 z-50
+          flex h-16 w-full
+          items-center justify-between
+          border-b border-gray-300 bg-white p-6 font-semibold
+          bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60
+        "
+      >
+        {/* Bên trái: SidebarTrigger và Breadcrumb */}
+        <div className="flex items-center space-x-4">
+          <SidebarTrigger />
+          {/* <Breadcrumb /> */}
         </div>
-      </div>
-    // </SidebarInset>
+
+        {/* Bên phải: Cụm nút đăng ký / đăng nhập */}
+        <div className="flex items-center space-x-4">
+          <Button variant="outline">
+            <Link href="/sign-up">Create an account</Link>
+          </Button>
+          <Button>
+            <Link href="/sign-in">Login</Link>
+          </Button>
+        </div>
+      </header>
   );
 };
 

@@ -2,6 +2,8 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
 import QueryProvider from '@/components/Providers/QueryProvider';
+import AdminNavbar from '@/components/Custombar/AdminNavbar';
+import AdminSidebar from '@/components/Custombar/AdminSidebar';
 
 const inter = Inter({
   subsets: ['latin'],
