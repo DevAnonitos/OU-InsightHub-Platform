@@ -1,7 +1,7 @@
 {
     "watch": ["src"],
     "ext": ".ts, .js",
-    "exec": "ts-node ./src/server.ts",
+    "exec": "ts-node ./src/cluster.ts",
     "execMap": {
       "ts": "ts-node --transpileOnly"
     },
@@ -9,13 +9,12 @@
       "swc": true
     },
     "verbose": true,
-    "legacy-watch": true,
     "ignore": ["node_modules", "dist"],
     "color": true,
     "restartable": "rs",
     "timestamp": "YYYY-MM-DD HH:mm:ss",
     "signal": "SIGINT",
-    "restartDelay": 1000,
+    "restartDelay": 100,
     "eslintConfig": {
       "rules": {
         "semi": ["error", "always"],

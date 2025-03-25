@@ -1,7 +1,11 @@
 import express, { Express, Request, Response } from "express";
 import routes from "./routes";
+import corsConfig from "./configs/cors.config";
 
 const app: Express = express();
+
+app.use(corsConfig);
+app.use(express.json());
 
 app.use(routes);
 
@@ -10,9 +14,9 @@ app.get("/", async (req: Request, res: Response) => {
       res.json({ message: 'Hello' });
     } catch (error) {
       console.error('Error with MongoDB connection:', error);
-      res.status(500).json({ error: 'Error APpp' });
+      res.status(500).json({ error: 'Error App' });
     }
-  });
+});
   
 
 export default app;
