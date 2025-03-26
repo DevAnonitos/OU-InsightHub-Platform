@@ -20,7 +20,56 @@ enum UserRole {
   ADMIN
 }
 
+enum PermissionAction {
+  READ
+  CREATE
+  UPDATE 
+  DELETE
+}
+
 // Config Model Schema
 model User {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  email       String       @unique
+  username    String?
+  password    String?
+  googleId    String?      @unique
 
+  firstName   String?
+  lastName    String?
+  gender      String?
+  avatarUrl   String?
+  description String?
+  isVerified  Boolean      @default(false)
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  roles        Role[]      @relation("UserRoles")
+
+  @@index([username])
+}
+
+model Role {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  name        UserRole     @unique
+  
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  users       User[]       @relation("UserRoles")
+  permissions Permission[] @relation("RolePermissions)
+
+  @@index([name])
+}
+
+model Permission {
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+
+  action      PermissionAction 
+ 
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  roles       Role[]       @relation("RolePermissions")
 }

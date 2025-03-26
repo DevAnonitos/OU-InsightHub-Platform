@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import authService from "../services/auth.service";
 
-export const signIn = async (req: Request, res: Request) => {
+export const signIn = async (req: Request, res: Response) => {
     try {
         
     } catch (error: any) {
@@ -9,7 +9,7 @@ export const signIn = async (req: Request, res: Request) => {
     }
 };
 
-export const signUp = async (req: Request, res: Request) => {
+export const signUp = async (req: Request, res: Response) => {
     try {
         
     } catch (error: any) {
@@ -17,7 +17,7 @@ export const signUp = async (req: Request, res: Request) => {
     }
 };
 
-export const google = async (req: Request, res: Request) => {
+export const google = async (req: Request, res: Response) => {
     try {
         
     } catch (error: any) {
@@ -25,7 +25,7 @@ export const google = async (req: Request, res: Request) => {
     }
 };
 
-export const signOut = async (req: Request, res: Request) => {
+export const signOut = async (req: Request, res: Response) => {
     try {
         
     } catch (error: any) {
