@@ -4,7 +4,7 @@ export interface IServer {
 
 export interface IOriginCallback {
     
-} 
+}; 
 
 export interface IUser {
 
