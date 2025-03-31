@@ -10,22 +10,22 @@ const originCache: Map<string, boolean> = new Map();
 
 const corsOptions: cors.CorsOptions = {
     origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
-        if (!origin) {
-          return callback(null, true);
-        }
+      if (!origin) {
+        return callback(null, true);
+      }
 
-        if (originCache.has(origin)) {
-          return callback(null, originCache.get(origin));
-        }
+      if (originCache.has(origin)) {
+        return callback(null, originCache.get(origin));
+      }
 
-        const isAllowed = allowedOriginsSet.has(origin);
-        originCache.set(origin, isAllowed);
+      const isAllowed = allowedOriginsSet.has(origin);
+      originCache.set(origin, isAllowed);
 
-        if (isAllowed) {
-          return callback(null, true);
-        } else {
-          return callback(new Error(`Origin ${origin} not allowed by CORS`), false);
-        }
+      if (isAllowed) {
+        return callback(null, true);
+      } else {
+        return callback(new Error(`Origin ${origin} not allowed by CORS`), false);
+      }
     },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],

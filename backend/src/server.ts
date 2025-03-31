@@ -3,7 +3,7 @@ import app from "./app";
 import { IServer } from "./interfaces";
 
 const configs: IServer = {
-    port: process.env.PORT || 4000
+    port: process.env.PORT || 4000,
 };
 
 export function startServer(): void {

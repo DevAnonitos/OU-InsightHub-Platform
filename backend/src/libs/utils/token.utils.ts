@@ -1,4 +1,4 @@
 import { 
   generateAccessToken, 
-  generateRefreshToken 
+  generateRefreshToken, 
 } from "../../helpers/token.helper";
