@@ -2,18 +2,19 @@
 
 import React from 'react';
 import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { loginAccount } from '@/lib/actions/auth';
-import Image from 'next/image';
 import Link from 'next/link';
+
+import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
+import { signInSchema } from '@/lib/schemas';
+import { loginAccount } from '@/lib/actions/auth';
+import { zodResolver } from "@hookform/resolvers/zod";
+
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
-import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Checkbox } from '../ui/checkbox';
-
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
 const formSchema = z.object({
@@ -24,6 +25,8 @@ const formSchema = z.object({
 
 const SignInForm = () => {
 
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,7 +34,11 @@ const SignInForm = () => {
       password: "",
       rememberMe: false,
     },
-  })
+  });
+
+  const sumitForm = (data: any) => {
+
+  };
 
   return (
     <Card className='w-full max-w-md border border-gray-300'>
@@ -75,7 +82,7 @@ const SignInForm = () => {
 
         {/* Form */}
         <Form {...form}>
-          <form className='space-y-4'>
+          <form onSubmit={form.handleSubmit(sumitForm)} className='space-y-4'>
             <FormField
               aria-label="Email"
               control={form.control}

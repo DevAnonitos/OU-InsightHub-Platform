@@ -1,15 +1,19 @@
 "use client"
 
-import * as z from "zod"
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Separator } from "@/components/ui/separator"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
+import * as z from "zod";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { useRouter } from 'next/navigation';
+import { signUpSchema } from "@/lib/schemas";
+import { createAccount } from "@/lib/actions/auth";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Separator } from "@/components/ui/separator";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 
 const formSchema = z
   .object({
@@ -27,6 +31,9 @@ const formSchema = z
   })
 
 const SignUpForm = () => {
+
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,10 +45,9 @@ const SignUpForm = () => {
     },
   })
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    // This would call your server action to register the account
+  const submitForm = (values: z.infer<typeof formSchema>) => {
     console.log(values)
-  }
+  };
 
   return (
     <Card className="w-full max-w-md border border-gray-300">
@@ -79,7 +85,7 @@ const SignUpForm = () => {
 
         {/* Form */}
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(submitForm)} className="space-y-4">
             <FormField
               control={form.control}
               name="username"

@@ -1,0 +1,134 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+rules:
+  ##########################################################################
+  # 1. Quy tắc kiểm tra format commit message (Conventional Commits)
+  ##########################################################################
+  - name: "Commit Message Format"
+    description: "Đảm bảo commit message tuân theo chuẩn Conventional Commits."
+    command: "commitlint --edit $1"
+    severity: "error"
+    # Thông thường bạn cần cài đặt commitlint (npm) và file config .commitlintrc
+
+  ##########################################################################
+  # 2. Quy tắc lint code cho backend (Node.js, TypeScript hoặc JavaScript)
+  ##########################################################################
+  - name: "Backend Lint"
+    description: "Chạy ESLint để kiểm tra code backend."
+    command: "cd backend && npm install && npm run lint"  # hoặc yarn/pnpm
+    severity: "error"
+    include:
+      - "backend/**/*.js"
+      - "backend/**/*.ts"
+    exclude:
+      - "backend/node_modules/"
+      - "backend/dist/"
+
+  ##########################################################################
+  # 3. Quy tắc lint code cho frontend (React/Vue/Angular...)
+  ##########################################################################
+  - name: "Frontend Lint"
+    description: "Chạy ESLint/Prettier để kiểm tra code frontend."
+    command: "cd frontend && npm install && npm run lint"
+    severity: "error"
+    include:
+      - "frontend/**/*.js"
+      - "frontend/**/*.ts"
+      - "frontend/**/*.jsx"
+      - "frontend/**/*.tsx"
+    exclude:
+      - "frontend/node_modules/"
+      - "frontend/dist/"
+
+  ##########################################################################
+  # 4. Kiểm tra format (Prettier) toàn cục (cả backend lẫn frontend)
+  ##########################################################################
+  - name: "Global Prettier Check"
+    description: "Đảm bảo code tuân theo định dạng Prettier."
+    command: "prettier --check ."
+    severity: "warning"
+    include:
+      - "**/*.js"
+      - "**/*.ts"
+      - "**/*.jsx"
+      - "**/*.tsx"
+      - "**/*.json"
+      - "**/*.md"
+    exclude:
+      - "node_modules/"
+      - "dist/"
+      - ".cursor"
+      - ".idx"
+
+  ##########################################################################
+  # 5. Kiểm tra unit test cho backend
+  ##########################################################################
+  - name: "Backend Unit Tests"
+    description: "Chạy test cho backend để đảm bảo logic hoạt động đúng."
+    command: "cd backend && npm run test"
+    severity: "error"
+    include:
+      - "backend/tests/**/*"
+
+  ##########################################################################
+  # 6. Kiểm tra unit test cho frontend
+  ##########################################################################
+  - name: "Frontend Unit Tests"
+    description: "Chạy test cho frontend."
+    command: "cd frontend && npm run test"
+    severity: "error"
+    include:
+      - "frontend/tests/**/*"
+
+  ##########################################################################
+  # 7. Kiểm tra Docker Compose
+  ##########################################################################
+  - name: "Docker Compose Lint"
+    description: "Kiểm tra các file docker-compose.yml và compose-dev.yml."
+    command: "docker-compose -f docker-compose.yml config && docker-compose -f compose-dev.yml config"
+    severity: "warning"
+    include:
+      - "docker-compose.yml"
+      - "compose-dev.yml"
+
+  ##########################################################################
+  # 8. Kiểm tra các file tài liệu (README, CHANGELOG, LICENSE, SECURITY)
+  ##########################################################################
+  - name: "Documentation Check"
+    description: "Đảm bảo các file tài liệu quan trọng có tồn tại và cập nhật."
+    # Giả sử bạn có 1 script nhỏ checkDoc.js kiểm tra logic "có file, có heading, v.v."
+    command: "node infra/scripts/checkDoc.js"
+    severity: "info"
+    include:
+      - "README.md"
+      - "CHANGELOG"
+      - "LICENSE"
+      - "CONTRIBUTING.md"
+      - "SECURITY.md"
+
+  ##########################################################################
+  # 9. Kiểm tra phiên bản Node (node-version) và config npm (npmrc)
+  ##########################################################################
+  - name: "Node Version & NPM Config"
+    description: "Đảm bảo phiên bản Node và npm config được thiết lập đúng."
+    # Có thể custom script hoặc cài package cross-env, semver, v.v. để check
+    command: "node infra/scripts/checkNodeVersion.js"
+    severity: "warning"
+    include:
+      - "node-version"
+      - "npmrc"
+
+  ##########################################################################
+  # 10. (Tuỳ chọn) Kiểm tra bảo mật (Snyk, npm audit, v.v.)
+  ##########################################################################
+  - name: "Security Audit"
+    description: "Chạy audit dependencies để phát hiện lỗ hổng bảo mật."
+    command: "npm audit --audit-level=moderate"
+    severity: "warning"
+    include:
+      - "backend/package.json"
+      - "frontend/package.json"
+
