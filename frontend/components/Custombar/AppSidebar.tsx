@@ -29,7 +29,7 @@ export function AppSidebar() {
           <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground shadow-sm">
             <span className="text-lg font-bold">OU</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col space-y-1">
             <span className="text-lg font-bold leading-none">OU Insight Hub</span>
             <span className="text-xs text-muted-foreground">Knowledge Portal</span>
           </div>

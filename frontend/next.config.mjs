@@ -5,6 +5,22 @@ const nextConfig = {
       fullUrl: true,
     }
   },
+  images: {
+    minimumCacheTTL: 31536000,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+        port: ''
+      },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: "/**",
+      }
+    ]
+  },
   typescript: {
     ignoreBuildErrors: true,
   },

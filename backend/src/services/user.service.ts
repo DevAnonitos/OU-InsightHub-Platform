@@ -1,11 +1,12 @@
+import prisma from "../configs/prisma.config";
 
 class UserService {
-    async getUser() {
+    async getUsers() {
 
     }
 
-    async getUserById() {
-        
+    async getCurrentUser() {
+
     }
 };
 

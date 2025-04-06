@@ -1,6 +1,7 @@
+import prisma from "../configs/prisma.config";
+import { hashPassword, comparePassword } from "../libs/utils/bcrypt.util";
 
-
-class AuthService {
+class AuthService { 
     async signUp() {
         return;
     }

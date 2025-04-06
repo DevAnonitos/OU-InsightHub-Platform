@@ -140,11 +140,14 @@ export default function HeroSection() {
               {/* Main image */}
               <div className="rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-xl">
                 <Image
-                  src="/assets/image.png"
+                  src="https://res.cloudinary.com/dmngqyhll/image/upload/v1743850741/image_kdru4y.webp"
                   width={800}
                   height={800}
                   alt="OU Insight Hub Dashboard"
                   className="w-full h-auto object-cover"
+                  placeholder="blur"
+                  decoding="async"
+                  blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA..."
                   priority
                 />
               </div>

@@ -1,6 +1,5 @@
 import cors from "cors";
 
-// Config CORS Logic
 const allowedOriginsArray: string[] = process.env.ALLOWED_ORIGINS?.split(",") || [
     "http://localhost:3000",
 ];

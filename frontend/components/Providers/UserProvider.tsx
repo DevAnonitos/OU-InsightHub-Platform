@@ -1,12 +1,37 @@
 "use client";
 
-import React from 'react';
-import { createUserStore } from '@/stores/userStore';
+import { useStore } from 'zustand';
+import { type UserStore } from '@/types';
+import { createUserStore } from '@/stores/UserStore';
+import React, { useRef, useContext, createContext } from 'react';
 
-const UserProvider = () => {
+interface UserProviderProps {
+  children: React.ReactNode,
+};
+
+type UserStoreApi = ReturnType<typeof createUserStore>;
+const UserStoreContext = createContext<UserStoreApi | undefined>(undefined);
+
+export const UserProvider = ({ children }: UserProviderProps) => {
+
+  const storeRef = useRef<UserStoreApi>();
+  if (!storeRef.current) {
+    storeRef.current = createUserStore();
+  }
+
   return (
-    <div>UserProvider</div>
+    <UserStoreContext.Provider value={storeRef.current}>
+      {children}
+    </UserStoreContext.Provider>
   );
 };
 
-export default UserProvider;
+export const useUserStore = <T,>(selector: (store: UserStore) => T): T => {
+  const userStoreContext = useContext(UserStoreContext);
+
+  if (!userStoreContext) {
+    throw new Error(`useUserStore must be used within UserStoreProvider`);
+  }
+
+  return useStore(userStoreContext, selector);
+};

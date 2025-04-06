@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
-import { SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/Custombar/AppSidebar";
-import Navbar from "@/components/Custombar/Navbar";
-import Bottombar from "@/components/Custombar/Bottombar";
+
+import ContainerLayout from "@/components/Shared/ContainerLayout";
 import QueryProvider from "@/components/Providers/QueryProvider";
+import { UserProvider } from "@/components/Providers/UserProvider";
 import { ThemeProvider } from "@/components/Providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -20,24 +19,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <QueryProvider>
-          <ThemeProvider>
-            <div className="flex w-full min-h-screen flex-col">
-              <div className="relative flex h-full w-full flex-1 transition-colors z-0">
-                <SidebarProvider>
-                  <AppSidebar />
-                  <div className="relative flex h-full max-w-full flex-1 flex-col">
-                    <div className="relative flex-1 flex flex-col transition-[width,height] ease-linear">
-                      <Navbar />
-                      <main className="flex w-full h-full p-6 bg-background">
-                        {children}
-                      </main>
-                      <Bottombar />
-                    </div>
-                  </div>
-                </SidebarProvider>
-              </div>
-            </div>
-          </ThemeProvider>
+          <UserProvider>
+            <ThemeProvider>
+              <ContainerLayout>
+                {children}
+              </ContainerLayout>
+            </ThemeProvider>
+          </UserProvider>
         </QueryProvider>
       </body>
     </html>

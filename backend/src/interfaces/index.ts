@@ -13,10 +13,10 @@ export interface IRedisConfig {
     password?: string;
 }
 
-export interface IResponseData {
+export interface IResponseData<T = any> {
     status: number;
     message: string;
-    data?: any;
+    data?: T;
 };
 
 export interface IOriginCallback {

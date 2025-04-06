@@ -6,7 +6,7 @@ export const responseHandler = {
     const responseBody: IResponseData = {
       status: 200,
       message,
-      data
+      data,
     };
     res.status(200).json(responseBody);
   },
@@ -15,7 +15,7 @@ export const responseHandler = {
     const responseBody: IResponseData = {
       status: 201,
       message,
-      data
+      data,
     };
     res.status(201).json(responseBody);
   },
@@ -23,7 +23,7 @@ export const responseHandler = {
   badRequest: (res: Response, message: string = "Bad request"): void => {
     const responseBody: IResponseData = {
       status: 400,
-      message
+      message,
     };
     res.status(400).json(responseBody);
   },
@@ -31,7 +31,7 @@ export const responseHandler = {
   unauthorized: (res: Response, message: string = "Unauthorized"): void => {
     const responseBody: IResponseData = {
       status: 401,
-      message
+      message,
     };
     res.status(401).json(responseBody);
   },
@@ -39,7 +39,7 @@ export const responseHandler = {
   forbidden: (res: Response, message: string = "Forbidden"): void => {
     const responseBody: IResponseData = {
       status: 403,
-      message
+      message,
     };
     res.status(403).json(responseBody);
   },
@@ -47,7 +47,7 @@ export const responseHandler = {
   notFound: (res: Response, message: string = "Not found"): void => {
     const responseBody: IResponseData = {
       status: 404,
-      message
+      message,
     };
     res.status(404).json(responseBody);
   },
@@ -59,6 +59,6 @@ export const responseHandler = {
       data: process.env.NODE_ENV === "development" ? error : undefined
     };
     res.status(500).json(responseBody);
-  }
+  },
 };
 
