@@ -17,3 +17,19 @@ export const getAllUsers = async (req: Request, res: Response) => {
         
     }
 };
+
+export const updateUserById = async () => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};
+
+export const deleteUserById = async () => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};

@@ -12,10 +12,10 @@ const app: Express = express();
 
 app.use(corsConfig);
 app.use(express.json());
-
+// Config Api Security 
+app.use(securityConfig);
 // Config Api Routes Endpoint
 app.use(routes);
-
 // To Configs errorMiddlware
 app.use(errorMiddleware);
   

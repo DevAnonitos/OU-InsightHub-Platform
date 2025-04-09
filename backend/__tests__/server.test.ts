@@ -1,0 +1,7 @@
+import { startServer } from "../src/server";
+
+describe('API Server', () => {
+  it('Should be defined', () => {
+    expect(startServer).toBeDefined();
+  })
+})
