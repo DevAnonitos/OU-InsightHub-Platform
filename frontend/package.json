@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "test:e2e": "playwright test"
+    "test": "jest --passWithNoTests",
+    "test:unit": "jest --passWithNoTests",
+    "test:e2e": "playwright test",
+    "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@hookform/resolvers": "^4.1.3",
