@@ -5,7 +5,7 @@ import CategoriesSection from "@/components/Sections/CategoriesSection";
 import StatsSection from "@/components/Sections/StatsSection";
 import SearchHeroSection from "@/components/Sections/SearchSection";
 
-export default function Home() {
+export default function HomePage() {
   return (
     <main className="flex flex-col w-full h-full">
       <HeroSection/>
