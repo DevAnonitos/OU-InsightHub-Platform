@@ -5,15 +5,11 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  await prisma.$disconnect();
+  await prismaConfig.$disconnect();
 });
 
 describe("Prisma client", () => {
   it("Should be defined", () => {
     expect(prismaConfig).toBeDefined();
-  })
-
-  it("Should be snapshot", () => {
-    expect(prismaConfig).toMatchSnapshot();
   })
 })

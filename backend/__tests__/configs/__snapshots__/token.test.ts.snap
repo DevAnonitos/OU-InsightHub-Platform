@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Token Config Should be Token Config Snapshot 1`] = `
+{
+  "accessOptions": {
+    "expiresIn": "7d",
+  },
+  "accessToken": undefined,
+  "refreshOptions": {
+    "expiresIn": "30d",
+  },
+  "refreshToken": undefined,
+}
+`;

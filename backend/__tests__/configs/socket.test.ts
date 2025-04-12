@@ -4,4 +4,8 @@ describe("Socket Config", () => {
   it("Should be defined Socket Config", () => {
     expect(socketConfig).toBeDefined();
   });
-})
+
+  it("Should be Socket Config Snapshoot", () => {
+    expect(socketConfig).toMatchSnapshot();
+  });
+});

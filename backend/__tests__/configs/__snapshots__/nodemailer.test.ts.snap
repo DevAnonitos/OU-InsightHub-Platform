@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nodemailer Config Should be defined Snapshot 1`] = `
+Mail {
+  "_defaultPlugins": {
+    "compile": [
+      [Function],
+    ],
+    "stream": [],
+  },
+  "_defaults": {},
+  "_events": {},
+  "_eventsCount": 0,
+  "_maxListeners": undefined,
+  "_userPlugins": {
+    "compile": [],
+    "stream": [],
+  },
+  "close": [Function],
+  "dkim": false,
+  "isIdle": [Function],
+  "logger": {
+    "debug": [Function],
+    "error": [Function],
+    "fatal": [Function],
+    "info": [Function],
+    "trace": [Function],
+    "warn": [Function],
+  },
+  "meta": Map {},
+  "options": {
+    "auth": {
+      "pass": undefined,
+      "user": undefined,
+    },
+    "port": 465,
+    "service": "smtp.gmail.com",
+  },
+  "transporter": SMTPTransport {
+    "_events": {
+      "error": [Function],
+      "idle": [Function],
+      "log": [Function],
+    },
+    "_eventsCount": 3,
+    "_maxListeners": undefined,
+    "auth": {
+      "credentials": {
+        "options": undefined,
+        "pass": undefined,
+        "user": "",
+      },
+      "method": false,
+      "type": "LOGIN",
+      "user": undefined,
+    },
+    "logger": {
+      "debug": [Function],
+      "error": [Function],
+      "fatal": [Function],
+      "info": [Function],
+      "trace": [Function],
+      "warn": [Function],
+    },
+    "mailer": [Circular],
+    "name": "SMTP",
+    "options": {
+      "auth": {
+        "pass": undefined,
+        "user": undefined,
+      },
+      "port": 465,
+      "service": "smtp.gmail.com",
+    },
+    "version": "6.10.0[client:6.10.0]",
+    Symbol(shapeMode): false,
+    Symbol(kCapture): false,
+  },
+  "verify": [Function],
+  Symbol(shapeMode): false,
+  Symbol(kCapture): false,
+}
+`;
