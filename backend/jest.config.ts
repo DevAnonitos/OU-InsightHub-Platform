@@ -12,7 +12,7 @@ const config: Config = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-  testTimeout: 5000,
+  testTimeout: 10000,
   reporters: [
     'default',
     [

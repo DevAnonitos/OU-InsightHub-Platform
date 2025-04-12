@@ -5,7 +5,7 @@ import userRoutes from "./user.route";
 
 const routes: Router = express.Router();
 
-// using Routes
+// using connected Api Routes
 routes.use("/auths", authRoutes);
 routes.use("/users", userRoutes);
 

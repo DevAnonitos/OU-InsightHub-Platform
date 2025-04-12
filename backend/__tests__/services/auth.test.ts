@@ -1,4 +1,4 @@
-import authService from "../../src/services/auth.service";
+import authService from "../../src/services/impl/auth.service";
 
 describe("Auth Services", () => {
   it("Should be defined Auth Services", () => {

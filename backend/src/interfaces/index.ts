@@ -1,3 +1,4 @@
+
 export interface IServer {
     port: number | string
 };
@@ -5,6 +6,8 @@ export interface IServer {
 export interface ITokenConfig {
     accessToken: string;
     refreshToken: string;
+    accessOptions: string;
+    refreshOptions: string;
 }
 
 export interface IRedisConfig {

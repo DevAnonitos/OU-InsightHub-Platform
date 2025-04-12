@@ -4,4 +4,8 @@ describe("CORS Config", () => {
   it("Should be defined CORS Config", () => {
     expect(corsConfig).toBeDefined();
   })
+
+  it("Should be defined Snapshot", () => {
+    expect(corsConfig).toMatchSnapshot();
+  })
 })

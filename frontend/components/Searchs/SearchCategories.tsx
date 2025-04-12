@@ -68,12 +68,12 @@ export function SearchCategories({ className }: SearchCategoryProps) {
     <div className={cn("grid grid-cols-2 sm:grid-cols-4 gap-3", className)}>
       {categories.map((category, index) => (
         <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: index * 0.05 }}
-          onMouseEnter={() => setHoveredIndex(index)}
-          onMouseLeave={() => setHoveredIndex(null)}
+          // key={index}
+          // initial={{ opacity: 0, y: 20 }}
+          // animate={{ opacity: 1, y: 0 }}
+          // transition={{ duration: 0.3, delay: index * 0.05 }}
+          // onMouseEnter={() => setHoveredIndex(index)}
+          // onMouseLeave={() => setHoveredIndex(null)}
         >
           <Link
             href={`/search?${category.query}`}

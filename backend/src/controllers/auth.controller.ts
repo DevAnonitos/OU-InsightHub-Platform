@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
-import authService from "../services/auth.service";
+import authService from "../services/impl/auth.service";
 import { responseHandler } from "../handlers/response.handler";
 
 export const signIn = async (req: Request, res: Response) => {
     try {
-        const data = await authService.signIn();
-        return responseHandler.success(res, data, "User signed in successfully");
+        
     } catch (error: any) {
         console.log(error.message);
         return responseHandler.unauthorized(res, error.message);
@@ -14,8 +13,7 @@ export const signIn = async (req: Request, res: Response) => {
 
 export const signUp = async (req: Request, res: Response) => {
     try {
-        const data = await authService.signUp();
-        return responseHandler.created(res, data, "User created successfully");
+        
     } catch (error: any) {
         console.log(error.message);
         return responseHandler.badRequest(res, error.message);
@@ -32,8 +30,7 @@ export const google = async (req: Request, res: Response) => {
 
 export const signOut = async (req: Request, res: Response) => {
     try {
-        const data = await authService.signOut();
-        return responseHandler.success(res, data, "User sign out successful");
+       
     } catch (error: any) {
         return responseHandler.serverError(res, error);
     }
