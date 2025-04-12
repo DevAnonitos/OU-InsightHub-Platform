@@ -7,7 +7,9 @@ export const errorMiddleware = (
   next: NextFunction
 ) => {
   try {
-    
+    if(res.headersSent) {
+      next(error);
+    }
   } catch (error: any) {
     next(error);
   }

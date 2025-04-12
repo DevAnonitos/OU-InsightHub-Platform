@@ -1,5 +1,5 @@
-import prismaConfig from "../../configs/prisma.config";
-import { hashPassword, comparePassword } from "../../libs/utils/bcrypt.util";
+import prismaConfig from "@/configs/prisma.config";
+import { hashPassword, comparePassword } from "@/libs/utils/bcrypt.util";
 
 class AuthService { 
     async createNewAccount(email: string, username: string, password: string) {
@@ -64,6 +64,10 @@ class AuthService {
         }
 
         return user;
+    }
+
+    async changePassword () {
+        
     }
 
     async logOutAccount(userId: string) {

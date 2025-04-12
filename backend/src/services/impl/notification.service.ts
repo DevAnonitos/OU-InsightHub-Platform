@@ -1,4 +1,4 @@
-import prisma from "../../configs/prisma.config";
+import prismaConfig from "@/configs/prisma.config";
 
 class NotificationService {
     async getNotifications () {

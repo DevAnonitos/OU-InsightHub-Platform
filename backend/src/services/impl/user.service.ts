@@ -1,9 +1,9 @@
-import prisma from "../../configs/prisma.config";
+import prismaConfig from "@/configs/prisma.config";
 
 class UserService {
     async getUsers() {
         try {
-            const users = await prisma.user.findMany({
+            const users = await prismaConfig.user.findMany({
                 select: {
                     id: true,
                     username: true,

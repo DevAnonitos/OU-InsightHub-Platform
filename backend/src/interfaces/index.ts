@@ -1,3 +1,4 @@
+import { SignOptions } from "jsonwebtoken";
 
 export interface IServer {
     port: number | string
@@ -6,8 +7,8 @@ export interface IServer {
 export interface ITokenConfig {
     accessToken: string;
     refreshToken: string;
-    accessOptions: string;
-    refreshOptions: string;
+    accessOptions: SignOptions;
+    refreshOptions: SignOptions;
 }
 
 export interface IRedisConfig {
