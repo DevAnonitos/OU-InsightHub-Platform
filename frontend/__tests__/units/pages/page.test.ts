@@ -36,6 +36,14 @@ describe("Page Component", () => {
         expect(component).toBeInstanceOf(Function);
         expect(typeof component).toBe('function');
       });
+
+      it(`Should have a lenght`, () => {
+        expect(component).toHaveLength(1);
+      });
+
+      it(`Should be ${name} Snapshot`, () => {
+        expect(component).toMatchSnapshot();
+      });
     });
   });
 });

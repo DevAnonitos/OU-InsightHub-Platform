@@ -21,4 +21,18 @@ describe("Custombar Component", () => {
   it("Should be defined Admin Navbar", () => {
     expect(AdminSidebar).toBeDefined();
   });
-})
+
+  it("Should be defined a function", () => {
+    expect(AppSidebar).toBeInstanceOf(Function);
+    expect(Bottombar).toBeInstanceOf(Function);
+    expect(AdminNavbar).toBeInstanceOf(Function);
+    expect(AdminSidebar).toBeInstanceOf(Function);
+  });
+
+  it("Should be Snapshot", () => {
+    expect(AppSidebar).toMatchSnapshot();
+    expect(Bottombar).toMatchSnapshot();
+    expect(AdminNavbar).toMatchSnapshot();
+    expect(AdminSidebar).toMatchSnapshot();
+  });
+});

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Component Admin Layout Should be Snapshot 1`] = `[Function]`;
+
+exports[`Layout Component Auth Layout Should be Snapshot 1`] = `[Function]`;
+
+exports[`Layout Component Root Layout Should be Snapshot 1`] = `[Function]`;

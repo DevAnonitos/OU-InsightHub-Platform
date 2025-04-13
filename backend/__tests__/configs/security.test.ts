@@ -5,6 +5,10 @@ describe("Security API", () => {
     expect(securityConfig).toBeDefined();
   });
 
+  it("Should be defined a function", () => {
+    expect(securityConfig).toBeInstanceOf(Function);
+  });
+
   it("Should be Security Config Snapshot", () => {
     expect(securityConfig).toMatchSnapshot();
   });

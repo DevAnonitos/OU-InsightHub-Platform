@@ -14,4 +14,16 @@ describe("Section Component", () => {
   it("Should be defined Search Hero Section", () => {
     expect(SearchHeroSection).toBeDefined();
   });
-})
+
+  it("Should be defined a function", () => {
+    expect(HeroSection).toBeInstanceOf(Function);
+    expect(StatsSection).toBeInstanceOf(Function);
+    expect(SearchHeroSection).toBeInstanceOf(Function);
+  });
+
+  it("Should be Snapshot", () => {
+    expect(HeroSection).toMatchSnapshot();
+    expect(StatsSection).toMatchSnapshot();
+    expect(SearchHeroSection).toMatchSnapshot();
+  });
+});

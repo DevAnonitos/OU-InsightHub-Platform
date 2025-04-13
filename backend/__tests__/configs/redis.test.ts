@@ -5,6 +5,10 @@ describe("Redis Config", () => {
     expect(redisClient).toBeDefined();
   })
 
+  it("Should be defined a function", () => {
+    expect(redisClient).toBeInstanceOf(Function);
+  })
+
   it("Should be Redis Config Snapshot", () => {
     expect(redisClient).toMatchSnapshot();
   })

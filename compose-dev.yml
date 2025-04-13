@@ -32,6 +32,9 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     restart: always
 
+  k6s:
+    container_name: k6s
+
   nginx:
     container_name: nginx
 

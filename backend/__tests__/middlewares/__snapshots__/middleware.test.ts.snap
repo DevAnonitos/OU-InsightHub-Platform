@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Middleware API Should be Snapshot 1`] = `[Function]`;
+
+exports[`Middleware API Should be defined Error Middleware 1`] = `[Function]`;

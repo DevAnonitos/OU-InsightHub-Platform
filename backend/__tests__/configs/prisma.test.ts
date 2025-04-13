@@ -11,5 +11,9 @@ afterAll(async () => {
 describe("Prisma client", () => {
   it("Should be defined", () => {
     expect(prismaConfig).toBeDefined();
-  })
+  });
+
+  it("Should be defined a function", () => {
+    expect(prismaConfig).toBeInstanceOf(Function);
+  });
 })

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page Component About OU Page Should be About OU Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component About Us Page Should be About Us Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Admin Page Should be Admin Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component FAQ Page Should be FAQ Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Forgot Password Page Should be Forgot Password Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Home Page Should be Home Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Management Page Should be Management Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Search Page Should be Search Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Sign In Page Should be Sign In Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Sign Up Page Should be Sign Up Page Snapshot 1`] = `[Function]`;
+
+exports[`Page Component Terms Page Should be Terms Page Snapshot 1`] = `[Function]`;

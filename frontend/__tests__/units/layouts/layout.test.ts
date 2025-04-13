@@ -9,6 +9,14 @@ describe("Layout Component", () => {
       expect(RootLayout).toBeInstanceOf(Function);
       expect(typeof RootLayout).toBe('function');
     });
+
+    it("Should have a lenght", () => {
+      expect(RootLayout).toHaveLength(1);
+    })
+
+    it("Should be Snapshot", () => {
+      expect(RootLayout).toMatchSnapshot();
+    });
   });
 
   describe("Auth Layout", () => {
@@ -17,6 +25,14 @@ describe("Layout Component", () => {
       expect(AuthLayout).toBeInstanceOf(Function); 
       expect(typeof AuthLayout).toBe('function');
     });
+
+    it("Should have a lenght", () => {
+      expect(AuthLayout).toHaveLength(1);
+    })
+
+    it("Should be Snapshot", () => {
+      expect(AuthLayout).toMatchSnapshot();
+    });
   });
 
   describe("Admin Layout", () => {
@@ -24,6 +40,14 @@ describe("Layout Component", () => {
       expect(AdminLayout).toBeDefined();
       expect(AdminLayout).toBeInstanceOf(Function);
       expect(typeof AdminLayout).toBe('function');
+    });
+
+    it("Should have a lenght", () => {
+      expect(AdminLayout).toHaveLength(1);
+    })
+
+    it("Should be Snapshot", () => {
+      expect(AdminLayout).toMatchSnapshot();
     });
   });
 });

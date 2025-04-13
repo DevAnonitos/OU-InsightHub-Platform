@@ -33,3 +33,7 @@ export const loginAccount = async (data: any) => {
         
     }
 };
+
+export const logOutAccount = async () => {
+
+};

@@ -5,4 +5,11 @@ describe("User Controller", () => {
     expect(getAllUsers).toBeDefined();
   });
 
+  it("Should be defined a function", () => {
+    expect(getAllUsers).toBeInstanceOf(Function);
+  });
+
+  it("Should be Snapshot", () => {
+    expect(getAllUsers).toMatchSnapshot();
+  });
 })

@@ -5,4 +5,11 @@ describe("Notification Controller", () => {
     expect(getAllNotifications).toBeDefined();
   });
 
+  it("Should be defined a function", () => {
+    expect(getAllNotifications).toBeInstanceOf(Function);
+  });
+  
+  it("Should be Snapshot", () => {
+    expect(getAllNotifications).toMatchSnapshot();
+  });
 })
