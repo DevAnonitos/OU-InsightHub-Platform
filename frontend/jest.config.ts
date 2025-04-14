@@ -9,14 +9,13 @@ const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
   testTimeout: 5000,
-  testMatch: ["**/__tests__/units/**/*.test.ts"],
+  testMatch: ["**/__tests__/units/**/*.test.{ts,tsx}"],
   // transform: {
   //   "^.+\\.jsx?$": "babel-jest"
   // },
   // transformIgnorePatterns: [
   //   "/node_modules/(?!(react-social-icons)/)"
   // ],
-  // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
     // '^@/components/(.*)$': '<rootDir>/components/$1',
@@ -24,7 +23,6 @@ const config: Config = {
     '^@/components/(.*)$': '<rootDir>/__mocks__/components/$1',
     '^@/next/(.*)$': '<rootDir>/__mocks__/next/$1',
   },
-  // setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   reporters: [
     'default',
     [
