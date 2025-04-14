@@ -1,6 +1,9 @@
 import app from "./app";
 import http from "http";
+
 import { IServer } from "./interfaces";
+
+import logger from "./loggers/winston.logger";
 import prismaConfig from "./configs/prisma.config";
 
 const configs: IServer = {
@@ -15,7 +18,7 @@ export async function startServer(): Promise<void> {
     const server = http.createServer(app);
 
     server.listen(configs.port, () => {
-      console.log(`[server]: Server is running at http://localhost:${configs.port}`);
+      logger.info(`[server]: Server is running at http://localhost:${configs.port}`);
     });
 
     const gracefulShutdown = async () => {
@@ -27,10 +30,10 @@ export async function startServer(): Promise<void> {
     process.on("SIGTERM", gracefulShutdown);
 
   } catch (error) {
-    console.error("❌ Unable to connect Prisma:", error);
+    logger.error("❌ Unable to connect Prisma:", error);
     process.exit(1);
   }
-}
+};
 
 if (require.main === module) {
   startServer();

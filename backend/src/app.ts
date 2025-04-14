@@ -4,17 +4,17 @@ import express, {
   Response 
 } from "express";
 import routes from "./routes";
-import corsConfig from "./configs/cors.config";
 import { securityConfig } from "./configs/security.config";
 import { errorMiddleware } from "./middlewares/error.middleware";
 
 const app: Express = express();
 
-app.use(corsConfig);
-app.use(express.json());
-// Config Api Security 
-app.use(securityConfig);
-// Config Api Routes Endpoint
+// Config Security App
+securityConfig(app);
+
+app.get('/', (req, res) => {
+  res.json({ message: 'hello' });
+});
 app.use(routes);
 // To Configs errorMiddlware
 app.use(errorMiddleware);
