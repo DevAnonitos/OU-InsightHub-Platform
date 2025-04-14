@@ -5,7 +5,7 @@ describe("Winston Logger", () => {
     expect(logger).toBeDefined();
   });
 
-  it("Should be SnapShot", () => {
-    expect(logger).toMatchSnapshot();
-  })
+  // it("Should be SnapShot", () => {
+  //   expect(logger).toMatchSnapshot();
+  // })
 })

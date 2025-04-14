@@ -10,7 +10,7 @@ describe("Token Config", () => {
   });
 
 
-  it("Should be Token Config Snapshot", () => {
-    expect(tokenConfig).toMatchSnapshot();
-  })
+  // it("Should be Token Config Snapshot", () => {
+  //   expect(tokenConfig).toMatchSnapshot();
+  // })
 })

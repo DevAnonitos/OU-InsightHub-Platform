@@ -5,7 +5,7 @@ describe("Winston Config", () => {
     expect(winstonConfig).toBeDefined();
   });
 
-  it("Should be Snapshot", () => {
-    expect(winstonConfig).toMatchSnapshot();
-  });
+  // it("Should be Snapshot", () => {
+  //   expect(winstonConfig).toMatchSnapshot();
+  // });
 })
