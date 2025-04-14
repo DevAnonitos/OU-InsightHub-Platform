@@ -8,6 +8,16 @@ const REFRESH_TOKEN_EXPIRIES = "30d";
 export const tokenConfig: ITokenConfig = {
   accessToken: ACCESS_TOKEN,
   refreshToken: REFRESH_TOKEN,
-  accessOptions: { expiresIn: ACCESS_TOKEN_EXPIRIES},
-  refreshOptions: { expiresIn: REFRESH_TOKEN_EXPIRIES },
+  accessOptions: { 
+    expiresIn: ACCESS_TOKEN_EXPIRIES,
+    audience: "access",
+    issuer: "user",
+    algorithm: "HS256",
+  },
+  refreshOptions: { 
+    expiresIn: REFRESH_TOKEN_EXPIRIES, 
+    audience: "refresh",
+    issuer: "user",
+    algorithm: "HS256",
+  },
 };

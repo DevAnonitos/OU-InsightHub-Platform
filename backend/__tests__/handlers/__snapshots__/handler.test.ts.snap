@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Handler Should be Snapshot 1`] = `
+{
+  "badRequest": [Function],
+  "created": [Function],
+  "forbidden": [Function],
+  "notFound": [Function],
+  "serverError": [Function],
+  "success": [Function],
+  "unauthorized": [Function],
+}
+`;

@@ -8,6 +8,10 @@ class TokenService {
     verifyToken () {
         
     }
+
+    refreshToken () {
+        
+    }
 };
 
 export default new TokenService();
