@@ -1,10 +1,10 @@
-import prismaConfig from "@/configs/prisma.config";
+import { prisma } from "@/configs/prisma.config";
 import { hashPassword, comparePassword } from "@/libs/utils/bcrypt.util";
 
 class AuthService { 
     async createNewAccount(email: string, username: string, password: string) {
         
-        const existingUser = await prismaConfig.user.findUnique({
+        const existingUser = await prisma.user.findUnique({
             where: { email },
         });
 
@@ -13,7 +13,7 @@ class AuthService {
         }
 
         const hashedPassword = await hashPassword(password);
-        const user = await prismaConfig.user.create({
+        const user = await prisma.user.create({
             data: {
                 username,
                 email,
@@ -25,7 +25,7 @@ class AuthService {
     }
 
     async loginAccount(email: string, password: string) {
-        const user = await prismaConfig.user.findUnique({
+        const user = await prisma.user.findUnique({
             where: { email },
         });
 
@@ -48,7 +48,7 @@ class AuthService {
     async google(googleId: string) {
         // Logic for handling Google sign-in can be added here
         // For example, find or create a user based on the googleId
-        const user = await prismaConfig.user.findUnique({
+        const user = await prisma.user.findUnique({
             where: { googleId },
         });
 

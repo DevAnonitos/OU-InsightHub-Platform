@@ -5,6 +5,7 @@ import express, {
 } from "express";
 import routes from "./routes";
 import { securityConfig } from "./configs/security.config";
+import { morganMiddleware } from "./middlewares/morgan.middleware";
 import { errorMiddleware } from "./middlewares/error.middleware";
 
 const app: Express = express();
@@ -15,8 +16,11 @@ securityConfig(app);
 app.get('/', (req, res) => {
   res.json({ message: 'hello' });
 });
+
+app.use(morganMiddleware);
+
 app.use(routes);
-// To Configs errorMiddlware
+
 app.use(errorMiddleware);
   
 export default app;

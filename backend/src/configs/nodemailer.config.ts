@@ -1,6 +1,10 @@
 import nodemailer from 'nodemailer';
 
-export const nodemailerConfig = nodemailer.createTransport({
+export const nodemailerConfigs = {
+
+};
+
+export const createNodeMailer = nodemailer.createTransport({
   service: 'smtp.gmail.com',
   port: 465,
   auth: {

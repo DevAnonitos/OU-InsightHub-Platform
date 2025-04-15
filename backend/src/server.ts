@@ -4,7 +4,7 @@ import http from "http";
 import { IServer } from "./interfaces";
 
 import logger from "./loggers/winston.logger";
-import prismaConfig from "./configs/prisma.config";
+import { prisma } from "./configs/prisma.config";
 
 const configs: IServer = {
   port: Number(process.env.PORT) || 4000,
@@ -12,7 +12,7 @@ const configs: IServer = {
 
 export async function startServer(): Promise<void> {
   try {
-    await prismaConfig.$connect();
+    await prisma.$connect();
     console.log("🔌 Prisma is connected to database");
 
     const server = http.createServer(app);
@@ -23,7 +23,7 @@ export async function startServer(): Promise<void> {
 
     const gracefulShutdown = async () => {
       console.log("🛑 Shutting down...");
-      await prismaConfig.$disconnect();
+      await prisma.$disconnect();
       process.exit(0);
     };
     process.on("SIGINT", gracefulShutdown);

@@ -1,3 +1,5 @@
-const socketConfig = null;
+import { Socket, ServerOptions } from "socket.io";
 
-export default socketConfig;
+export const socketConfig: Partial<ServerOptions> = {
+
+};

@@ -1,12 +1,14 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import { withOptimize } from "@prisma/extension-optimize";
 
-const prismaConfig = new PrismaClient({
-    log: ['query', 'info', 'warn', 'error'],
-}).$extends(
+export const prismaConfigs: Prisma.PrismaClientOptions = {
+  log: ['query', 'info', 'warn', 'error'],
+  errorFormat: "pretty",
+};
+
+export const prisma = new PrismaClient(prismaConfigs).$extends(
   withOptimize({
     apiKey: process.env.OPTIMIZE_API_KEY || "",
-  })
+  }),
 );
 
-export default prismaConfig;

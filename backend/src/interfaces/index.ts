@@ -11,12 +11,6 @@ export interface ITokenConfig {
     refreshOptions?: SignOptions;
 };
 
-export interface IRedisConfig {
-    host: string;
-    port: number;
-    password?: string;
-};
-
 export interface IResponseData<T = any> {
     status: number;
     message: string;
