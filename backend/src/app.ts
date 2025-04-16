@@ -14,7 +14,7 @@ const app: Express = express();
 securityConfig(app);
 
 app.get('/', (req, res) => {
-  res.json({ message: 'hello' });
+  res.json({ message: 'hello messages' });
 });
 
 app.use(morganMiddleware);

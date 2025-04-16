@@ -35,3 +35,11 @@ export const signOut = async (req: Request, res: Response) => {
         return responseHandler.serverError(res, error);
     }
 };
+
+export const refreshToken = async (req: Request, res: Response) => {
+    try {
+       
+    } catch (error: any) {
+        return responseHandler.serverError(res, error);
+    }
+}

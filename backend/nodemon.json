@@ -1,12 +1,13 @@
 {
-    "watch": ["src"],
-    "ext": ".ts, .js",
+    "watch": ["src/**/*.ts"],
+    "ext": ".ts, .js, json",
     "exec": "ts-node ./src/cluster.ts",
     "execMap": {
-      "ts": "ts-node --transpileOnly"
+      "ts": "ts-node --transpileOnly --nolazy -r ts-node/registe ./src/cluster.ts"
     },
     "ts-node": {
-      "swc": true
+      "swc": true,
+      "transpileOnly": true
     },
     "verbose": true,
     "ignore": ["node_modules", "dist"],
