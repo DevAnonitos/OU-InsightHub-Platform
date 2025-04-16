@@ -1,5 +1,7 @@
 .vscode/
 
+dist/
+
 # Modules
 /node_modules
 /.pnp

@@ -6,7 +6,9 @@
   "scripts": {
     "dev:cluster": "nodemon",
     "dev:single": "nodemon --exec ts-node ./src/server.ts",
-    "test": "jest --passWithNoTests",
+    "start": "node dist/cluster.js",        
+    "start:single": "node dist/server.js",
+    "build": "tsc",  
     "test:report": "jest --coverage",
     "test:html": "jest --coverage && open test-report/report.html"
   },

@@ -1,44 +1,48 @@
 services:
   client:
-    # Build the frontend application using a multi-stage Dockerfile
     build:
       context: ./frontend/
       dockerfile: Dockerfile
-      target: production # Build using the production stage in Dockerfile
+      target: development
+    command: ["npm", "run", "dev"]
     ports:
       - "3000:3000"
     restart: unless-stopped
-    # Healthcheck for the client service
     healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"] 
       interval: 10s
       timeout: 5s
       retries: 3
-    # Mounts a volume to persist data outside of the container
     volumes:
+      - ./frontend:/app
       - client-node_modules:/app/node_modules
-      - client-build:/app/build
+    env_file:
+      - .env
+    networks:
+      - dev-network
 
   server:
-    # Build the backend application using a multi-stage Dockerfile
     build:
       context: ./backend/
       dockerfile: Dockerfile
-      target: production # Build using the production stage in Dockerfile
+      target: development
     ports:
-      - "5000:5000"
+      - "4000:4000"
     restart: unless-stopped
-    # Healthcheck for the server service
     healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/"] 
       interval: 20s
       timeout: 5s
       retries: 5
       start_period: 40s
-    # Mounts a volume to persist data outside of the container
     volumes:
+      - ./backend:/app 
       - server-node_modules:/app/node_modules
 
-# Define the named volumes used by the services.
 volumes:
   client-node_modules:
-  client-build:
   server-node_modules:
+
+networks:
+  dev-network:
+    driver: bridge
