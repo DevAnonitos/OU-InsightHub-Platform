@@ -29,7 +29,7 @@ export const getUserById = async (req: Request, res: Response) => {
 export const updateUserById = async (req: Request, res: Response) => {
     try {
         
-    } catch (error) {
+    } catch (error: any) {
         
     }
 };
@@ -37,7 +37,7 @@ export const updateUserById = async (req: Request, res: Response) => {
 export const deleteUserById = async (req: Request, res: Response) => {
     try {
         
-    } catch (error) {
+    } catch (error: any) {
         
     }
 };
@@ -45,7 +45,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
 export const changePassword = async (req: Request, res: Response) => {
     try {
         
-    } catch (error) {
+    } catch (error: any) {
         
     }
 };
@@ -53,7 +53,7 @@ export const changePassword = async (req: Request, res: Response) => {
 export const uploadAvatar = async (req: Request, res: Response) => {
     try {
         
-    } catch (error) {
+    } catch (error: any) {
         
     }
 };

@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { IResponseData } from "../interfaces";
+import { IResponseData } from "@/interfaces";
 
 export const responseHandler = {
   success: (res: Response, data?: any, message: string = "Success"): void => {

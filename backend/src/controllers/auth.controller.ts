@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import authService from "@/services/impl/auth.service";
-import { responseHandler } from "../handlers/response.handler";
+import { responseHandler } from "@/handlers/response.handler";
 
 export const signIn = async (req: Request, res: Response) => {
     try {

@@ -29,6 +29,10 @@ class UserService {
     async deleteUser () {
 
     }
+
+    async updateAvatar () {
+
+    }
 };
 
 export default new UserService();

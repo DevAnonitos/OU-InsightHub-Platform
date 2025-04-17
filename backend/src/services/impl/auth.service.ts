@@ -66,7 +66,15 @@ class AuthService {
         return user;
     }
 
-    async changePassword () {
+    async refreshToken () {
+
+    }
+
+    async forgotPassword () {
+
+    }
+
+    async resetPassword () {
         
     }
 

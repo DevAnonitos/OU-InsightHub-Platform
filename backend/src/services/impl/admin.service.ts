@@ -1,3 +1,4 @@
+import { prisma } from "@/configs/prisma.config";
 
 class AdminService {
 

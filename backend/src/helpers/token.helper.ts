@@ -1,5 +1,5 @@
-import { tokenConfig } from "@/configs/token.config";
 import jwt, { JwtPayload } from "jsonwebtoken";
+import { tokenConfig } from "@/configs/token.config";
 
 interface ITokenConfig {
   payload: object;

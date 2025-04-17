@@ -1,4 +1,4 @@
-import prismaConfig from "@/configs/prisma.config";
+import { prisma } from "@/configs/prisma.config";
 
 class PostService {
     async createPost() {

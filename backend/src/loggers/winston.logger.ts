@@ -1,5 +1,5 @@
 import winston from "winston";
-import { winstonConfig, colors } from "../configs/winston.config";
+import { winstonConfig, colors } from "@/configs/winston.config";
 
 winston.addColors(colors);
 
