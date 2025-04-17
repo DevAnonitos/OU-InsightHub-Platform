@@ -1,20 +1,91 @@
+# === GENERAL ===
+.DS_Store
+Thumbs.db
+
+# VSCode config
 .vscode/
 
-dist/
+# Env config
+.env
+.env.*.local
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Modules
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
-
-# Log
-logs/
+# Log files
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log
 
-# typescript
+# Editor settings
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-specific files
+ehthumbs.db
+Icon?
+desktop.ini
+
+# === NODE MODULES ===
+node_modules/
+.pnp/
+.pnp.js
+.pnp.cjs
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+
+# === BUILD OUTPUT ===
+dist/
+build/
+.next/
+out/
+coverage/
+.temp/
+.cache/
+turbo/
+storybook-static/
+.eslintcache
 *.tsbuildinfo
-.env
-.env*.local
+
+# === MONOREPO WORKSPACES ===
+**/node_modules/
+**/dist/
+**/build/
+**/.turbo/
+**/.next/
+**/.cache/
+
+# === PACKAGE MANAGER LOCKFILES ===
+
+# === TEST ===
+coverage/
+*.lcov
+*.lcov.info
+.nyc_output/
+test-results/
+
+
+# === DOCKER ===
+*.pid
+
+# === PRISMA ===
+prisma/dev.db
+prisma/dev.db-journal
+prisma/migrations/
+
+# === PM2 PROCESS LOG ===
+pids
+*.pid
+*.seed
+*.log

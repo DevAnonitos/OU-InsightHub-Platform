@@ -1,9 +1,9 @@
 {
     "watch": ["src/**/*.ts"],
     "ext": ".ts, .js, json",
-    "exec": "ts-node ./src/cluster.ts",
+    "exec": "ts-node -r tsconfig-paths/register ./src/cluster.ts",
     "execMap": {
-      "ts": "ts-node --transpileOnly --nolazy -r ts-node/registe ./src/cluster.ts"
+      "ts": "ts-node --transpileOnly --nolazy -r ts-node/register src/cluster.ts"
     },
     "ts-node": {
       "swc": true,

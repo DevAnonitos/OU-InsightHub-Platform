@@ -7,13 +7,16 @@ import {
   updateUserById, 
   deleteUserById, 
   uploadAvatar,
-} from "../../controllers/user.controller";
+  changePassword,
+} from "@/controllers/user.controller";
 
 const router = express.Router();
 
 router.get("/", getAllUsers);
 router.get("/me", getCurrentUser);
 router.post("/me/avatar", uploadAvatar);
+router.post("/me/change-pasword", changePassword);
+
 router.get("/:id", getUserById);
 router.patch("/:id", updateUserById);
 router.delete("/:id", deleteUserById);

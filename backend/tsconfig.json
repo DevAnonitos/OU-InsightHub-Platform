@@ -8,7 +8,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "rootDir": "./src",  
+    "rootDir": "src",  
     "esModuleInterop": true,     
     "resolveJsonModule": true,    
     "allowSyntheticDefaultImports": true,                    
