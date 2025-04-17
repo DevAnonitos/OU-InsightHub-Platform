@@ -42,23 +42,6 @@ export const deleteUserById = async (req: Request, res: Response) => {
     }
 };
 
-export const forgotPassword = async (req: Request, res: Response) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-};
-
-export const resetPassword = async (req: Request, res: Response) => {
-    try {
-        
-    } catch (error) {
-        
-    }
-};
-
-
 export const uploadAvatar = async (req: Request, res: Response) => {
     try {
         

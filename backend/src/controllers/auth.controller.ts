@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import authService from "../services/impl/auth.service";
+import authService from "@/services/impl/auth.service";
 import { responseHandler } from "../handlers/response.handler";
 
 export const signIn = async (req: Request, res: Response) => {
@@ -42,4 +42,20 @@ export const refreshToken = async (req: Request, res: Response) => {
     } catch (error: any) {
         return responseHandler.serverError(res, error);
     }
-}
+};
+
+export const forgotPassword = async (req: Request, res: Response) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};
+
+export const resetPassword = async (req: Request, res: Response) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+};
