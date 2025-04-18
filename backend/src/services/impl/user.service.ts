@@ -1,21 +1,9 @@
 import { prisma } from "@/configs/prisma.config";
+import { userRepository } from "@/repositories/user.repository";
 
 class UserService {
     async getUsers() {
-        try {
-            const users = await prisma.user.findMany({
-                select: {
-                    id: true,
-                    username: true,
-                    email: true,
-                    createdAt: true,
-                    updatedAt: true,
-                },
-            });
-            return users;
-        } catch (error: any) {
-            throw new Error("Error fetching users: " + error.message);
-        }
+       
     }
 
     async getCurrentUser () {

@@ -33,7 +33,3 @@ export interface IEmailContent {
     text: string;
     html: string;
 };
-
-export interface IOriginCallback {
-    
-}; 
