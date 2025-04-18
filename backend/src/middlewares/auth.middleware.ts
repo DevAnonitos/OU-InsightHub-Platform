@@ -9,7 +9,7 @@ export const authorize = (req: Request, res: Response, next: NextFunction) => {
     const token = authHeader.split(" ")[1]
     console.log("Token:", token);
     if(!token) return res.sendStatus(401).json({ message: "Unauthorized" });
-    
+
     try {
         next();
     } catch (error: any) {

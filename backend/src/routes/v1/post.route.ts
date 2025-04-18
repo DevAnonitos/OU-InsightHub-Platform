@@ -1,4 +1,5 @@
 import express from "express";
+import { authorize } from "@/middlewares/auth.middleware";
 import { 
   getAllPosts, 
   getPostById,

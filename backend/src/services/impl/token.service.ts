@@ -9,7 +9,11 @@ class TokenService {
         
     }
 
-    refreshToken () {
+    refreshTokens () {
+        
+    }
+
+    revokeToken () {
         
     }
 };

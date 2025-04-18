@@ -6,8 +6,8 @@ import {
 } from "@/helpers/token.helper";
 
 export const generateToken = (payload: object) => {
-  const accessToken = generateAccessToken();
-  const refreshToken = generateRefreshToken();
+  const accessToken = generateAccessToken({ payload });
+  const refreshToken = generateRefreshToken({ payload });
 
   return {
     accessToken,
@@ -19,11 +19,3 @@ export const verifyToken =  (token: string) => {
   
   return;
 };
-
-// export const refreshAccesToken = () => {
-//   try {
-    
-//   } catch (error: any) {
-//     return null;
-//   }
-// };

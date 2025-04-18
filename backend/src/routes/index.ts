@@ -1,9 +1,9 @@
 import express, { Router } from "express";
 
-import v1Routes from "./v1/index.routes";
-import v2Routes from "./v2/index.routes";
-import v3Routes from "./v3/index.routes";
-import v4Routes from "./v4/index.routes";
+import v1Routes from "./v1";
+import v2Routes from "./v2";
+import v3Routes from "./v3";
+import v4Routes from "./v4";
 
 const routes: Router = express.Router();
 
