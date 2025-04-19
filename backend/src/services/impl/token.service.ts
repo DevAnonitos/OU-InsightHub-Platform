@@ -6,8 +6,8 @@ class TokenService {
         return generateToken(payload);
     }
 
-    verifyToken () {
-        
+    verifyToken (token: string, type: "access" | "refresh") {
+        return verifyToken(token, type);
     }
 
     refreshTokens () {

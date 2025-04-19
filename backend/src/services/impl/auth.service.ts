@@ -29,13 +29,7 @@ class AuthService {
     };
 
     async loginAccount(data: SignInDTO) {
-        // const user = await userRepository.findByEmail(data.email);
-        // if(!user || !user.password) throw new Error("User not found");
-        // const isMatch = await comparePassword(data.password, user.password);
-        // if(!isMatch) throw new Error("Invalid password");
-        // return {
-        //     user,
-        // };
+
     };
 
     async google(googleId: string) {
