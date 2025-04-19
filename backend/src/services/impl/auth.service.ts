@@ -1,87 +1,60 @@
 import tokenService from "./token.service";
-import { prisma } from "@/configs/prisma.config";
+import { TokenPayLoadDTO } from "@/dtos/token.dto";
+import { SignInDTO, SignUpDTO } from "@/dtos/auth.dto";
+import { userRepository } from "@/repositories/user.repository";
 import { hashPassword, comparePassword } from "@/libs/utils/bcrypt.util";
 
 class AuthService { 
-    async createNewAccount(email: string, username: string, password: string) {
-        
-        const existingUser = await prisma.user.findUnique({
-            where: { email },
+    async createNewAccount(data: SignUpDTO) {
+        const existingUser = await userRepository.findByEmail(data.email);
+        if(existingUser) throw new Error("User is exist!")
+        const hashedPassword = await hashPassword(data.password);
+    
+        const user = await userRepository.create({
+            ...data,
+            password: hashedPassword,
         });
 
-        if (existingUser) {
-            throw new Error("User already exists with this email.");
-        }
+        const payload: TokenPayLoadDTO = {
+            id: user.id,
+            email: user.email,
+        };
 
-        const hashedPassword = await hashPassword(password);
-        const user = await prisma.user.create({
-            data: {
-                username,
-                email,
-                password: hashedPassword,
-            },
-        });
+        const tokens = await tokenService.createToken(payload);
 
-        return user;
-    }
+        return {
+            user,
+            tokens,
+        };
+    };
 
-    async loginAccount(email: string, password: string) {
-        const user = await prisma.user.findUnique({
-            where: { email },
-        });
-
-        if (!user) {
-            throw new Error("User not found.");
-        }
-
-        if (!user.password) {
-            throw new Error("User has no password set.");
-        }
-
-        const isPasswordValid = await comparePassword(password, user.password);
-        if (!isPasswordValid) {
-            throw new Error("Invalid password.");
-        }
-
-        return user;
-    }
+    async loginAccount(data: SignInDTO) {
+        // const user = await userRepository.findByEmail(data.email);
+        // if(!user || !user.password) throw new Error("User not found");
+        // const isMatch = await comparePassword(data.password, user.password);
+        // if(!isMatch) throw new Error("Invalid password");
+        // return {
+        //     user,
+        // };
+    };
 
     async google(googleId: string) {
-        // Logic for handling Google sign-in can be added here
-        // For example, find or create a user based on the googleId
-        const user = await prisma.user.findUnique({
-            where: { googleId },
-        });
-
-        if (!user) {
-            // Create a new user if not found
-            // const newUser = await prismaConfig.user.create({
-            //     data: {
-            //         googleId,
-            //         // Additional user data can be added here
-            //     },
-            // });
-            // return newUser;
-        }
-
-        return user;
-    }
+        
+    };
 
     async refreshToken () {
 
-    }
+    };
 
     async forgotPassword () {
 
-    }
+    };
 
     async resetPassword () {
         
-    }
+    };
 
     async logOutAccount(userId: string) {
-        // Logic for logging out can be implemented here
-        // For example, invalidate the user's session or token
         return { message: "User logged out successfully." };
     }
 };

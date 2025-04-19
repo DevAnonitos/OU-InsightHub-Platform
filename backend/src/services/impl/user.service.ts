@@ -3,11 +3,13 @@ import { userRepository } from "@/repositories/user.repository";
 
 class UserService {
     async getUsers() {
-       
+       return userRepository.findAll();
     }
 
-    async getCurrentUser () {
-
+    async getCurrentUser (userId: string) {
+        const user = await userRepository.findById(userId);
+        if (!user) throw new Error("User not found");
+        return user;
     }
 
     async updateUser () {

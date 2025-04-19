@@ -4,18 +4,23 @@ import { responseHandler } from "../handlers/response.handler";
 
 export const getAllUsers = async (req: Request, res: Response) => {
     try {
-        
+        const user = await userService.getUsers();
+        return responseHandler.success(res, user);
     } catch (error: any) {
-        
+        return responseHandler.serverError(res, error);
     }
 };
 
 export const getCurrentUser = async (req: Request, res: Response) => {
     try {
-        
+        const userId = (req as any).user?.id;
+        const user = await userService.getCurrentUser(userId);
+        if(!user) return responseHandler.notFound(res, "User not found");
+        return responseHandler.success(res, user);
     } catch (error: any) {
-        
-    }
+       console.log(error);
+       return responseHandler.serverError(res, error);
+    } 
 };
 
 export const getUserById = async (req: Request, res: Response) => {

@@ -5,11 +5,11 @@ export const create = (data: any) => {
 };
 
 export const findAll = () => {
-  return;
+  return prisma.user.findMany();
 }
 
 export const findById = (id: string) => {
-  return;
+  return prisma.user.findUnique({ where: { id } });
 };
 
 export const findByEmail = (email: string) => {

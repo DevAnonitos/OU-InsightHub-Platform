@@ -15,7 +15,10 @@ export const generateToken = (payload: object) => {
   };
 };
 
-export const verifyToken =  (token: string) => {
-  
-  return;
+export const verifyToken =  (token: string, type: "access" | "refresh") => {
+  if (type === "access") {
+    return verifyAccessToken(token);
+  } else {
+    return verifyRefreshToken(token);
+  }
 };
