@@ -13,7 +13,7 @@ import {
 const router = express.Router();
 
 router.get("/", getAllUsers);
-router.get("/me", getCurrentUser);
+router.get("/me", authorize, getCurrentUser);
 router.post("/me/avatar", uploadAvatar);
 router.post("/me/change-pasword", changePassword);
 

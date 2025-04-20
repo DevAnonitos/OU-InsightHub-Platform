@@ -7,8 +7,11 @@ export const signIn = async (req: Request, res: Response) => {
     try {
         const parsed = signInSchema.safeParse(req.body);
         if(!parsed.success) return responseHandler.badRequest(res, parsed.error.message);
-        const user = await authService.loginAccount(parsed.data);
-        return responseHandler.success(res, user);
+        const { user, tokens}  = await authService.loginAccount(parsed.data);
+        return responseHandler.success(res, {
+            user,
+            tokens,
+        });
     } catch (error: any) {
         console.log(error.message);
         return responseHandler.unauthorized(res, error.message);
@@ -21,7 +24,6 @@ export const signUp = async (req: Request, res: Response) => {
         if(!parsed.success) return responseHandler.badRequest(res, parsed.error.message);
         const { user, tokens } = await authService.createNewAccount(parsed.data);
         return responseHandler.created(res, {
-            message: "Account created successfully",
             user,
             tokens,
         });

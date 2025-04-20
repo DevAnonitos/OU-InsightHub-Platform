@@ -20,15 +20,7 @@ const formSchema = z
     username: z.string().min(3, "Username must be at least 3 characters"),
     email: z.string().email("Invalid email address"),
     password: z.string().min(6, "Password must be at least 6 characters"),
-    confirmPassword: z.string().min(6, "Password must be at least 6 characters"),
-    acceptTerms: z.boolean().refine((val) => val === true, {
-      message: "You must accept the terms and conditions",
-    }),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"],
-  })
+  });
 
 const SignUpForm = () => {
 
@@ -40,13 +32,17 @@ const SignUpForm = () => {
       username: "",
       email: "",
       password: "",
-      confirmPassword: "",
-      acceptTerms: false,
     },
   })
 
-  const submitForm = (values: z.infer<typeof formSchema>) => {
-    console.log(values)
+  const submitForm = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const response = await createAccount(values);
+      console.log(response);
+      router.push("/sign-in");
+    } catch (error) {
+      console.error("Account creation failed:", error);
+    }
   };
 
   return (
@@ -138,7 +134,7 @@ const SignUpForm = () => {
                 </FormItem>
               )}
             /> */}
-            <FormField
+            {/* <FormField
               control={form.control}
               name="acceptTerms"
               render={({ field }) => (
@@ -161,7 +157,7 @@ const SignUpForm = () => {
                   </div>
                 </FormItem>
               )}
-            />
+            /> */}
             <Button type="submit" className="w-full cursor-pointer">
               Create an account
             </Button>

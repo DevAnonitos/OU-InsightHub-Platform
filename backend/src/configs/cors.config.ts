@@ -2,6 +2,7 @@ import cors from "cors";
 
 const allowedOriginsArray: string[] = process.env.ALLOWED_ORIGINS?.split(",") || [
     "http://localhost:3000",
+    "https://3000-idx-ou-insighthub-platform-1740844176702.cluster-bec2e4635ng44w7ed22sa22hes.cloudworkstations.dev/"
 ];
 
 const allowedOriginsSet: Set<string> = new Set(allowedOriginsArray);

@@ -16,7 +16,13 @@ class UserService {
         
     }
 
-    async deleteUser () {
+    async deleteUser (userId: string) {
+        const user = await userRepository.findById(userId);
+        if (!user) throw new Error("User not found");
+        return userRepository.removeById(userId);
+    }
+
+    async deleteUsers () {
 
     }
 

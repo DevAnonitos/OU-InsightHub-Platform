@@ -14,11 +14,12 @@ export const createAccount = async (data: any) => {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify(data)
-        })
-        return dataResponse; 
+        });
+
+        return dataResponse.json();
     } catch (error: any) {
-        console.log(error.message);
-        throw new Error("Fetch Error", error);
+        console.log("Error:", error.message);
+        throw new Error("Fetch Error: " + error.message);
     }
 };
 

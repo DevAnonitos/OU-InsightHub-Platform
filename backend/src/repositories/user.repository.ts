@@ -5,11 +5,26 @@ export const create = (data: any) => {
 };
 
 export const findAll = () => {
-  return prisma.user.findMany();
+  return prisma.user.findMany({
+    select: {
+      id: true,
+      username: true,
+      email: true,
+    }
+  });
 }
 
 export const findById = (id: string) => {
-  return prisma.user.findUnique({ where: { id } });
+  return prisma.user.findUnique({ 
+    where: { id },
+    // include: {
+    //   userRoles: {
+    //     include: {
+    //       role: true,
+    //     }
+    //   }
+    // } 
+  });
 };
 
 export const findByEmail = (email: string) => {
