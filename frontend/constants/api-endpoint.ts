@@ -5,7 +5,7 @@ export const SIGNOUT_ENDPOINT = `/api/v1/auths/sign-out`;
 
 // User routes endpoint
 export const GET_USERS_ENDPOINT = `/api/v1/users`;
-
+export const GET_USER_ENDPOINT = `/api/v1/users/me`;
 
 // Post routes endpoint
 

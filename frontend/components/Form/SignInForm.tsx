@@ -3,6 +3,7 @@
 import React from 'react';
 import * as z from "zod";
 import Link from 'next/link';
+import { useUserStore } from '../Providers/UserProvider';
 
 import { useForm } from "react-hook-form";
 import { useRouter } from 'next/navigation';
@@ -20,24 +21,33 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
-  rememberMe: z.boolean().default(false),
+  // rememberMe: z.boolean().default(false),
 });
 
 const SignInForm = () => {
 
   const router = useRouter();
 
+  const signIn = useUserStore((state) => state.signIn);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
       password: "",
-      rememberMe: false,
+      // rememberMe: false,
     },
   });
 
-  const sumitForm = (data: any) => {
-
+  const sumitForm = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const response = await loginAccount(values);
+      console.log(response);
+      await signIn({ accessToken: response.data?.tokens.accessToken });
+      router.push("/")
+    } catch (error) {
+      console.error("Account login failed:", error);
+    }
   };
 
   return (
@@ -112,7 +122,7 @@ const SignInForm = () => {
               )}
             />
             <div className="flex items-center justify-between">
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="rememberMe"
                 render={({ field }) => (
@@ -126,7 +136,7 @@ const SignInForm = () => {
               />
               <Link href="/forgot-password" className="px-0 font-normal text-sm">
                 Forgot password?
-              </Link>
+              </Link> */}
             </div>
             <Button type="submit" className="w-full cursor-pointer">
                 Sign in

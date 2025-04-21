@@ -33,7 +33,11 @@ export const loginAccount = async (data: any) => {
             body: JSON.stringify(data)
         });
 
-        return dataResponse;
+        const response = await dataResponse.json();
+        console.log(response)
+        const { accessToken, refreshToken } = response.data?.tokens;
+        await setAuthCookies({ accessToken, refreshToken });
+        return response;
     } catch (error: any) {
         console.log(error.message);
         throw new Error("Fetch Error", error);
