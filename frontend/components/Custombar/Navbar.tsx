@@ -15,7 +15,6 @@ const Navbar = () => {
   const { data, isLoading, isError } = useCurrentUser();
   const { user, isAuthenticated, setUser } = useUserStore((state) => state);
 
-  // Set Zustand khi fetch thành công
   useEffect(() => {
     if (data && !user) {
       console.log('Setting user:', data?.data);
@@ -23,7 +22,6 @@ const Navbar = () => {
     }
   }, [data, setUser, user]);
 
-  // Nếu không auth, redirect
   useEffect(() => {
     if (!isAuthenticated && !isLoading && !isError) {
       router.push("/sign-in");
@@ -44,7 +42,7 @@ const Navbar = () => {
         <SidebarTrigger />
         {/* <Breadcrumb /> */}
       </div>
-
+      
       <div className="flex items-center space-x-4">
         {!isAuthenticated ? (
           <>
@@ -57,7 +55,7 @@ const Navbar = () => {
           </>
         ) : (
           <div className="flex items-center space-x-4">
-            <span className="text-sm">Welcome, {user?.userName}</span>
+            <span className="text-sm">Welcome, {user?.username}</span>
             {/* <Button variant="outline" onClick={signOut}>
               Sign Out
             </Button> */}

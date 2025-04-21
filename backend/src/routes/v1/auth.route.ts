@@ -17,6 +17,7 @@ router.post("/sign-up", signUp);
 router.post("/sign-out", signOut);
 
 router.post("/google", google);
+router.get("/google/callback")
 router.get("/refresh-token", refreshToken);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);

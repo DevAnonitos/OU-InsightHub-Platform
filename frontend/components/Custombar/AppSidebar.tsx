@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { Plus, Search } from "lucide-react"
+import { useUserStore } from "../Providers/UserProvider"
 
 import { menuSections } from "@/constants/menu-items"
 import { Button } from "@/components/ui/button"
@@ -14,10 +15,13 @@ import {
   SidebarRail,
   SidebarSeparator,
 } from "@/components/ui/sidebar"
-import { SidebarSection } from "./AppSidebarMenuItems"
-import ProfileUser from "../Shared/ProfileUser"
+import { SidebarSection } from "./AppSidebarMenuItems";
+import ProfileUser from "../Shared/ProfileUser";
 
 export function AppSidebar() {
+
+  const { isAuthenticated, user } = useUserStore((state) => state);
+
   return (
     <Sidebar className="bg-white">
       <SidebarHeader className="flex flex-col items-center justify-center py-4 px-2">
@@ -49,7 +53,12 @@ export function AppSidebar() {
 
       <SidebarContent>
         {menuSections.map((section) => (
-          <SidebarSection key={section.id} sectionId={section.id} label={section.label} items={section.items} />
+          <SidebarSection 
+            key={section.id} 
+            sectionId={section.id} 
+            label={section.label} 
+            items={section.items} 
+          />
         ))}
 
         <SidebarGroup>
@@ -61,9 +70,19 @@ export function AppSidebar() {
           </Button>
         </SidebarGroup>
       </SidebarContent>
+
       <SidebarFooter className="p-4">
-        <ProfileUser />
+        {isAuthenticated && user && (
+          <ProfileUser
+            userId={user.userId}
+            userName={user.username}
+            email={user.email}
+            avatarUrl={user.avatarUrl} // nếu có
+            usernameTag={user.username || `@${user.username?.toLowerCase()}`}
+          />
+        )}
       </SidebarFooter>
+
       <SidebarRail />
     </Sidebar>
   );

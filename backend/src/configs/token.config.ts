@@ -1,7 +1,7 @@
 import { ITokenConfig } from "../interfaces";
 
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN! as string;
-const REFRESH_TOKEN = process.env.REFRESH_TOKEN! as string;
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN! ;
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN!;
 const ACCESS_TOKEN_EXPIRIES = "7d";
 const REFRESH_TOKEN_EXPIRIES = "30d";
 

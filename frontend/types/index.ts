@@ -1,7 +1,7 @@
 export type UserTypes = {
   userId: string;
   email: string;
-  userName: string;
+  username: string;
   userRoles: string[];
   createdAt: Date;
   gender?: string;
