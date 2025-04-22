@@ -161,64 +161,64 @@ export const researchItems: MenuSection = {
     items: [
       {
         title: "Research Projects",
-        url: "/research/projects",
+        url: "/projects",
         icon: Folders,
         description: "Browse and manage research projects",
         items: [
           {
             title: "Active Projects",
-            url: "/research/projects/active",
+            url: "/projects/active",
             description: "Currently active research projects",
           },
           {
             title: "Archived Projects",
-            url: "/research/projects/archived",
+            url: "/projects/archived",
             description: "Completed and archived research",
           },
           {
             title: "Create New Project",
-            url: "/research/projects/new",
+            url: "/projects/new",
             description: "Start a new research project",
           },
         ],
       },
       {
         title: "Data Repository",
-        url: "/research/data",
+        url: "/data",
         icon: Database,
         description: "Access research data collections",
         items: [
           {
             title: "Public Datasets",
-            url: "/research/data/public",
+            url: "/data/public",
             description: "Publicly available datasets",
           },
           {
             title: "My Datasets",
-            url: "/research/data/my-datasets",
+            url: "/data/my-datasets",
             description: "Your uploaded datasets",
           },
           {
             title: "Upload Data",
-            url: "/research/data/upload",
+            url: "/data/upload",
             description: "Upload new research data",
           },
         ],
       },
       {
         title: "Visualizations",
-        url: "/research/visualizations",
+        url: "/visualizations",
         icon: PieChart,
         description: "Data visualization tools",
         items: [
           {
             title: "Charts & Graphs",
-            url: "/research/visualizations/charts",
+            url: "/visualizations/charts",
             description: "Create and view data charts",
           },
           {
             title: "Interactive Dashboards",
-            url: "/research/visualizations/dashboards",
+            url: "/visualizations/dashboards",
             description: "Interactive data dashboards",
           },
         ],
@@ -233,54 +233,54 @@ export const resourceItems: MenuSection = {
     items: [
       {
         title: "Knowledge Base",
-        url: "/resources/knowledge-base",
+        url: "/knowledge-base",
         icon: BookOpen,
         description: "Access knowledge articles and guides",
         items: [
           {
             title: "Articles",
-            url: "/resources/knowledge-base/articles",
+            url: "/knowledge-base/articles",
             description: "Educational articles and guides",
           },
           {
             title: "Tutorials",
-            url: "/resources/knowledge-base/tutorials",
+            url: "/knowledge-base/tutorials",
             description: "Step-by-step tutorials",
           },
         ],
       },
       {
         title: "Publications",
-        url: "/resources/publications",
+        url: "/publications",
         icon: FileText,
         description: "Research publications and papers",
         items: [
           {
             title: "Recent Publications",
-            url: "/resources/publications/recent",
+            url: "/publications/recent",
             description: "Recently published research",
           },
           {
             title: "My Publications",
-            url: "/resources/publications/my-publications",
+            url: "/publications/my-publications",
             description: "Your published research",
           },
         ],
       },
       {
         title: "Learning Resources",
-        url: "/resources/learning",
+        url: "/learning",
         icon: GraduationCap,
         description: "Educational materials and courses",
         items: [
           {
             title: "Courses",
-            url: "/resources/learning/courses",
+            url: "/learning/courses",
             description: "Online courses and training",
           },
           {
             title: "Workshops",
-            url: "/resources/learning/workshops",
+            url: "/learning/workshops",
             description: "Upcoming workshops and events",
           },
         ],
@@ -295,72 +295,72 @@ export const collaborationItems: MenuSection = {
     items: [
       {
         title: "Teams",
-        url: "/collaboration/teams",
+        url: "/teams",
         icon: Users,
         description: "Manage research teams and groups",
         items: [
           {
             title: "My Teams",
-            url: "/collaboration/teams/my-teams",
+            url: "/teams/my-teams",
             description: "Teams you belong to",
           },
           {
             title: "Create Team",
-            url: "/collaboration/teams/create",
+            url: "/teams/create",
             description: "Start a new research team",
           },
         ],
       },
       {
         title: "Messages",
-        url: "/collaboration/messages",
+        url: "/messages",
         icon: MessageSquare,
         description: "Communication with collaborators",
         items: [
           {
             title: "Inbox",
-            url: "/collaboration/messages/inbox",
+            url: "/messages/inbox",
             description: "Your message inbox",
           },
           {
             title: "Discussions",
-            url: "/collaboration/messages/discussions",
+            url: "/messages/discussions",
             description: "Topic-based discussions",
           },
         ],
       },
       {
         title: "Calendar",
-        url: "/collaboration/calendar",
+        url: "/calendar",
         icon: Calendar,
         description: "Schedule and events",
         items: [
           {
             title: "My Calendar",
-            url: "/collaboration/calendar/my-calendar",
+            url: "/calendar/my-calendar",
             description: "Your personal calendar",
           },
           {
             title: "Team Events",
-            url: "/collaboration/calendar/team-events",
+            url: "/calendar/team-events",
             description: "Team meetings and events",
           },
         ],
       },
       {
         title: "Shared Resources",
-        url: "/collaboration/shared",
+        url: "/shared",
         icon: Share2,
         description: "Shared files and resources",
         items: [
           {
             title: "Shared with Me",
-            url: "/collaboration/shared/with-me",
+            url: "/shared/with-me",
             description: "Resources shared with you",
           },
           {
             title: "My Shared Items",
-            url: "/collaboration/shared/my-items",
+            url: "/shared/my-items",
             description: "Items you've shared with others",
           },
         ],
@@ -373,7 +373,7 @@ export const menuSections: MenuSection[] = [
   aboutOUItems, 
   researchItems, 
   resourceItems, 
-  collaborationItems
+  collaborationItems,
 ];
   
   // Default open sections

@@ -2,12 +2,15 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { SidebarTrigger } from "../ui/sidebar";
-import { Button } from "../ui/button";
-import Breadcrumb from "../Shared/Breadcrumb";
-import { useCurrentUser } from "@/lib/queries/queries";
 
+import ThemeToggle from "../Shared/ThemeToggle";
+import SettingDialog from "../Settings/SettingDialog";
+import { NotificationDropdown } from "../Notifications/NotificationDropdown";
+
+import { useCurrentUser } from "@/lib/queries/queries";
 import { useUserStore } from "../Providers/UserProvider";
 
 const Navbar = () => {
@@ -40,7 +43,6 @@ const Navbar = () => {
     >
       <div className="flex items-center space-x-4">
         <SidebarTrigger />
-        {/* <Breadcrumb /> */}
       </div>
       
       <div className="flex items-center space-x-4">
@@ -55,10 +57,9 @@ const Navbar = () => {
           </>
         ) : (
           <div className="flex items-center space-x-4">
-            <span className="text-sm">Welcome, {user?.username}</span>
-            {/* <Button variant="outline" onClick={signOut}>
-              Sign Out
-            </Button> */}
+            <ThemeToggle />
+            <NotificationDropdown />
+            <SettingDialog />
           </div>
         )}
       </div>

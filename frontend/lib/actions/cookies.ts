@@ -9,9 +9,9 @@ import { cookies } from "next/headers";
 export const setAuthCookies = async (data: any) => {
   cookies().set('accessToken', data.accessToken, {
     httpOnly: true,
-    secure: true,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: "strict",
-    maxAge: 60 * 10,
+    maxAge: 60 * 60,
     priority: "medium",
     path: "/",
   })

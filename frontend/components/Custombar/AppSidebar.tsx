@@ -63,7 +63,7 @@ export function AppSidebar() {
 
         <SidebarGroup>
           <Button variant="outline" className="w-full justify-start mt-4 gap-2 text-primary" asChild>
-            <Link href="/research/projects/new" aria-label="Create a new research project">
+            <Link href="/projects/new" aria-label="Create a new research project">
               <Plus className="h-4 w-4" />
               <span>New Research Project</span>
             </Link>

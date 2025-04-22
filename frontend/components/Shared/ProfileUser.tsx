@@ -79,6 +79,7 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{userName}</span>
+                  <span className="truncate font-semibold">{userId}</span>
                   <span className="truncate text-xs">{usernameTag || email}</span>
                 </div>
               </div>
