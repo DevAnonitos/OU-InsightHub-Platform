@@ -11,5 +11,8 @@ export const getCurrentUser = async () => {
   }
   
   const json = await response.json();
+  if (!json.data || !json.data.user) {
+    throw new Error("User data is missing");
+  }
   return json.data.user;
 }

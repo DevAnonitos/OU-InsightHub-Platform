@@ -1,5 +1,5 @@
 export type UserTypes = {
-  userId: string;
+  id: string;
   email: string;
   username: string;
   userRoles: string[];

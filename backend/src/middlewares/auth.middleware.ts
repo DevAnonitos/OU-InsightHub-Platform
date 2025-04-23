@@ -5,7 +5,7 @@ export const authorize = async (req: Request, res: Response, next: NextFunction)
   try {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    if (!authHeader || !authHeader.startsWith("Bearer")) {
       console.log("❌ No token provided in Authorization header");
       res.status(401).json({ message: "Unauthorized: No token provided" });
       return;
@@ -31,10 +31,9 @@ export const authorize = async (req: Request, res: Response, next: NextFunction)
 
     console.log("✅ Token verified. Decoded payload:", decoded);
 
-    // Gắn user vào req để các controller phía sau sử dụng
     (req as any).user = decoded;
 
-    next(); // Cho phép đi tiếp
+    next();
   } catch (error: any) {
     console.error("❌ Authorization error:", error.message);
     res.status(401).json({

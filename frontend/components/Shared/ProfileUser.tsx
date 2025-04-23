@@ -1,6 +1,8 @@
 "use client";
 
+import { useMemo } from "react";
 import { useRouter } from "next/navigation";
+import { getRandomColor } from "@/lib/utils";
 import {
   BadgeCheck,
   Bell,
@@ -28,6 +30,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useUserStore } from "../Providers/UserProvider";
 
 interface ProfileUserProps {
   userId: string;
@@ -39,11 +42,21 @@ interface ProfileUserProps {
 
 const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: ProfileUserProps) => {
   const router = useRouter();
+
+  const { signOut } = useUserStore((state) => state);
+
+  const randomColor = useMemo(() => getRandomColor(), []);
+
   const fallbackInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
   const handleAccountClick = () => {
     router.push(`/profile/${userId}`);
   };
+
+  const handleSignOut = async () => {
+    await signOut();
+    router.push('/sign-in'); 
+  }
 
   return (
     <SidebarMenu>
@@ -56,7 +69,12 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
             >
               <Avatar className="h-8 w-8 rounded-lg">
                 <AvatarImage src={avatarUrl || ""} alt={userName} />
-                <AvatarFallback className="rounded-lg">{fallbackInitial}</AvatarFallback>
+                <AvatarFallback 
+                  className="rounded-lg" 
+                  style={{ backgroundColor: avatarUrl ? "transparent" : randomColor }}
+                >
+                  {fallbackInitial}
+                </AvatarFallback>
               </Avatar>
               <div className="grid flex-1 text-left text-sm leading-tight">
                 <span className="truncate font-semibold">{userName}</span>
@@ -75,11 +93,15 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
               <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={avatarUrl || ""} alt={userName} />
-                  <AvatarFallback className="rounded-lg">{fallbackInitial}</AvatarFallback>
+                  <AvatarFallback 
+                    className="rounded-lg" 
+                    style={{ backgroundColor: avatarUrl ? "transparent" : randomColor }}
+                  >
+                    {fallbackInitial}
+                  </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{userName}</span>
-                  <span className="truncate font-semibold">{userId}</span>
                   <span className="truncate text-xs">{usernameTag || email}</span>
                 </div>
               </div>
@@ -113,7 +135,7 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={handleSignOut}>
               <LogOut />
               Log out
             </DropdownMenuItem>

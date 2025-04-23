@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import authService from "@/services/impl/auth.service";
 import { responseHandler } from "@/handlers/response.handler";
 import { signInSchema, signUpSchema } from "@/libs/schemas/auth.schema";
+import tokenService from "@/services/impl/token.service";
 
 export const signIn = async (req: Request, res: Response) => {
     try {
@@ -43,7 +44,10 @@ export const google = async (req: Request, res: Response) => {
 
 export const signOut = async (req: Request, res: Response) => {
     try {
-       
+       res.clearCookie("accessToken");
+       res.clearCookie("refreshToken");
+
+       return responseHandler.success(res, { message: "Successfully logged out!" });
     } catch (error: any) {
         return responseHandler.serverError(res, error);
     }
@@ -51,8 +55,17 @@ export const signOut = async (req: Request, res: Response) => {
 
 export const refreshToken = async (req: Request, res: Response) => {
     try {
-       
+       const refreshToken = (req as any).body?.refreshToken;
+
+       console.log('Received refresh token:', refreshToken);
+
+       const tokens = await authService.refreshToken(refreshToken);
+
+       return responseHandler.success(res, {
+            tokens
+       });
     } catch (error: any) {
+        console.error('Error in refreshToken:', error);
         return responseHandler.serverError(res, error);
     }
 };

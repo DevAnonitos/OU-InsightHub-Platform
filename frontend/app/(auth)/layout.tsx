@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import '../globals.css';
 import { Inter } from 'next/font/google';
+import { Toaster } from "@/components/ui/sonner"
 import QueryProvider from '@/components/Providers/QueryProvider';
 import { UserProvider } from '@/components/Providers/UserProvider';
 
@@ -24,6 +25,7 @@ export default function AuthLayout ({
             <main>
               {children}
             </main>
+            <Toaster />
           </UserProvider>
         </QueryProvider>
       </body>

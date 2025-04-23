@@ -24,6 +24,14 @@ export const createUserStore = (
           });
           set(initState);
         },
+        setUser: (data) => {
+          console.log("Setting user:", data);
+          set((state) => ({
+            ...state,
+            isAuthenticated: true,
+            user: data,
+          }));
+        },
         signIn: async (data) => {
           console.log("Access Token:", data.accessToken);
           try {
@@ -51,14 +59,7 @@ export const createUserStore = (
         signUp: (data) => {
           set({ isAuthenticated: true, user: data });
         },
-        setUser: (data: UserTypes) => {
-          console.log("Setting user:", data);
-          set((state) => ({
-            ...state,
-            isAuthenticated: true,
-            user: data,
-          }));
-        },
+        
       })),
       {
         name: "UserStore",

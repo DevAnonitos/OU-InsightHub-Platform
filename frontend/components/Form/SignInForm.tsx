@@ -11,6 +11,7 @@ import { signInSchema } from '@/lib/schemas';
 import { loginAccount } from '@/lib/actions/auth';
 import { zodResolver } from "@hookform/resolvers/zod";
 
+import { toast } from "sonner";
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Separator } from '../ui/separator';
@@ -45,8 +46,10 @@ const SignInForm = () => {
       console.log(response);
       await signIn({ accessToken: response.data?.tokens.accessToken });
       router.push("/")
+      toast.success("Sign-in successful! Welcome back.");
     } catch (error) {
       console.error("Account login failed:", error);
+      toast.error("Account login failed. Please try again.");
     }
   };
 

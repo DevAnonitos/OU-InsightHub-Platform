@@ -74,11 +74,11 @@ export function AppSidebar() {
       <SidebarFooter className="p-4">
         {isAuthenticated && user && (
           <ProfileUser
-            userId={user.userId}
+            userId={user.id}
             userName={user.username}
             email={user.email}
             avatarUrl={user.avatarUrl} // nếu có
-            usernameTag={user.username || `@${user.username?.toLowerCase()}`}
+            usernameTag={`@${user.username?.toLowerCase()}`}
           />
         )}
       </SidebarFooter>

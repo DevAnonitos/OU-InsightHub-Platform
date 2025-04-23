@@ -69,8 +69,9 @@ class AuthService {
         
     };
 
-    async refreshToken () {
-
+    async refreshToken (token: string) {
+        const tokens = await tokenService.refreshTokens(token);
+        return tokens;
     };
 
     async forgotPassword () {
@@ -81,7 +82,7 @@ class AuthService {
         
     };
 
-    async logOutAccount(userId: string) {
+    async logOutAccount() {
         return { message: "User logged out successfully." };
     }
 };
