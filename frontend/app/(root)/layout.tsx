@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${inter.className} antialiased`}>
         <QueryProvider>
           <UserProvider>
-            <ThemeProvider>
+            <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
               <ContainerLayout>
                 {children}
               </ContainerLayout>

@@ -3,21 +3,18 @@ import { NextRequest } from 'next/server';
 import { REFRESH_TOKEN_ENDPOINT, GET_USER_ENDPOINT } from './constants/api-endpoint';
 import { ResponseCookies, RequestCookies } from 'next/dist/server/web/spec-extension/cookies';
 
-// Hàm applySetCookie dùng để đảm bảo cookies được set chính xác cho request.
 function applySetCookie(req: NextRequest, res: NextResponse): void {
-  const setCookies = new ResponseCookies(res.headers); // lấy cookies từ response
-  const newReqHeaders = new Headers(req.headers);      // tạo một headers mới cho request
-  const newReqCookies = new RequestCookies(newReqHeaders); // dùng headers mới để tạo cookies request
+  const setCookies = new ResponseCookies(res.headers); 
+  const newReqHeaders = new Headers(req.headers);   
+  const newReqCookies = new RequestCookies(newReqHeaders); 
 
-  // thêm cookies vào trong request header
   setCookies.getAll().forEach((cookie) => newReqCookies.set(cookie));
 
-  // trả về response với các header đã cập nhật
   NextResponse.next({
     request: { headers: newReqHeaders },
   }).headers.forEach((value, key) => {
     if (key === 'x-middleware-override-headers' || key.startsWith('x-middleware-request-')) {
-      res.headers.set(key, value); // override lại header để các middleware/phía sau có thể sử dụng cookies mới
+      res.headers.set(key, value);
     }
   });
 }
@@ -64,14 +61,20 @@ export const middleware = async (request: NextRequest) => {
         applySetCookie(request, res);
         return res;
       } else {
-        // res.cookies.delete('accessToken');
-        // res.cookies.delete('refreshToken');
+        res.cookies.delete('accessToken');
+        res.cookies.delete('refreshToken');
         console.warn('⚠️ Token refresh failed:', result?.message || 'Unknown error');
       }
     } catch (error: any) {
-      
+      console.error('❌ Refresh token request failed:', error.message);
+      res.cookies.delete('accessToken');
+      res.cookies.delete('refreshToken');
     }
   }
 
   return res;
 }
+
+export const config = {
+  matcher: ['/admin/:path'],
+};

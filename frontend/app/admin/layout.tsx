@@ -2,6 +2,7 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import '../globals.css';
 import QueryProvider from '@/components/Providers/QueryProvider';
+import { ThemeProvider } from '@/components/Providers/ThemeProvider';
 import AdminNavbar from '@/components/Custombar/AdminNavbar';
 import AdminSidebar from '@/components/Custombar/AdminSidebar';
 
@@ -24,9 +25,11 @@ export default function AdminLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryProvider>
-          <main className="">
-            {children}
-          </main>
+          <ThemeProvider>
+            <main className="">
+              {children}
+            </main>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

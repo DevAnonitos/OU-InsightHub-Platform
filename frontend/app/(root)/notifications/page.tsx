@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react'
+import React from 'react';
 
-const page = () => {
+const NotificationPage = () => {
   return (
-    <div>page</div>
-  )
-}
+    <div>NotificationPage</div>
+  );
+};
 
-export default page
+export default NotificationPage;

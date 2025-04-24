@@ -20,6 +20,10 @@ const ProfileUserPage = ({ params }: Props) => {
 
   const router = useRouter();
 
+  if(!user) {
+    router.push("/sign-in");
+  }
+
   return (
     <section className='w-full h-full'>
       <div className='container px-4 md:px-6 w-full mx-auto'>

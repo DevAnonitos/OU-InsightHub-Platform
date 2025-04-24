@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import authService from "@/services/impl/auth.service";
 import { responseHandler } from "@/handlers/response.handler";
 import { signInSchema, signUpSchema } from "@/libs/schemas/auth.schema";
-import tokenService from "@/services/impl/token.service";
+
 
 export const signIn = async (req: Request, res: Response) => {
     try {
@@ -34,13 +34,21 @@ export const signUp = async (req: Request, res: Response) => {
     }
 };
 
-export const google = async (req: Request, res: Response) => {
+export const googleLogin = async (req: Request, res: Response) => {
     try {
         
     } catch (error: any) {
-        return;
+        return responseHandler.badRequest(res, error.message);
     }
 };
+
+export const googleCallback = async (req: Request, res: Response) => {
+    try {
+        
+    } catch (error: any) {
+        return responseHandler.unauthorized(res, error.message);
+    }   
+}
 
 export const signOut = async (req: Request, res: Response) => {
     try {

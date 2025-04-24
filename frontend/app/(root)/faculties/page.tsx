@@ -1,9 +1,14 @@
-import React from 'react'
+"use client";
 
-const page = () => {
+import React from 'react';
+import FacultyList from '@/components/Faculty/FacultyList';
+
+const FacultyPage = () => {
   return (
-    <div>page</div>
+    <div>
+      <FacultyList />
+    </div>
   )
 }
 
-export default page
+export default FacultyPage

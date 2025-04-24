@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useRouter } from "next/navigation";
 import { getRandomColor } from "@/lib/utils";
+import { hashUserId } from "@/lib/utils/userIdHasher";
 import {
   BadgeCheck,
   Bell,
@@ -50,7 +51,8 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
   const fallbackInitial = userName?.charAt(0)?.toUpperCase() || "U";
 
   const handleAccountClick = () => {
-    router.push(`/profile/${userId}`);
+    const hashedId = hashUserId(userId);
+    router.push(`/profile/${hashedId}`);
   };
 
   const handleSignOut = async () => {
