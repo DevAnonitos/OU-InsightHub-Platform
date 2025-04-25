@@ -36,15 +36,46 @@ export const signUp = async (req: Request, res: Response) => {
 
 export const googleLogin = async (req: Request, res: Response) => {
     try {
-        
+        const url = await authService.googleAuthUrl();
+        return responseHandler.success(res, { url });
     } catch (error: any) {
-        return responseHandler.badRequest(res, error.message);
+        return responseHandler.serverError(res, error.message);
     }
 };
 
 export const googleCallback = async (req: Request, res: Response) => {
     try {
-        
+        const code = req.query.code as string;
+
+        if (!code) {
+        return responseHandler.badRequest(res, "Missing Google authorization code");
+        }
+
+        const { user, tokens } = await authService.googleLoginAccount(code);
+
+        const isProd = process.env.NODE_ENV === "production";
+
+        res.cookie("accessToken", tokens.accessToken, {
+            httpOnly: true,
+            secure: isProd,
+            sameSite: "strict",
+            maxAge: 60 * 60 * 1000, // 1 hour in ms
+            path: "/",
+          });
+      
+          res.cookie("refreshToken", tokens.refreshToken, {
+            httpOnly: true,
+            secure: isProd,
+            sameSite: "strict",
+            maxAge: 60 * 60 * 24 * 30 * 1000, // 30 days
+            path: "/",
+          });
+
+          const userParam = encodeURIComponent(JSON.stringify(user));
+          const clientUrl = process.env.CLIENT_URL || "http://localhost:3000";
+          const redirectUrl = `${clientUrl}/oauth-success?user=${userParam}`;
+          
+        return res.redirect(redirectUrl);
     } catch (error: any) {
         return responseHandler.unauthorized(res, error.message);
     }   

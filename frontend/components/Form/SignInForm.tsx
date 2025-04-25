@@ -29,7 +29,7 @@ const SignInForm = () => {
 
   const router = useRouter();
 
-  const signIn = useUserStore((state) => state.signIn);
+  const {signIn, setUser} = useUserStore((state) => state);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,7 +64,25 @@ const SignInForm = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <Button type='button' className='w-full cursor-pointer border border-gray-300' variant="outline">
+        <Button 
+        type='button' 
+        className='w-full cursor-pointer border border-gray-300' 
+        variant="outline"
+        onClick={async () => {
+          try {
+            const res = await fetch("http://localhost:4000/api/v1/auths/google");
+            const json = await res.json();
+            const url = json.data?.url;
+            if (url) {
+              window.location.href = url; // ✅ redirect tới Google OAuth
+            } else {
+              console.error("No URL returned");
+            }
+          } catch (error) {
+            console.error("Google Auth fetch error:", error);
+          }
+        }}
+      >
           <svg
             className="mr-2 h-4 w-4"
             aria-hidden="true"
