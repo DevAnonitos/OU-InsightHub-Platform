@@ -18,11 +18,10 @@ import {
   FormMessage, 
 } from "../ui/form";
 
-
-const SettingForm = () => {
+const CreateTeamForm = () => {
   return (
-    <div>SettingForm</div>
-  );
-};
+    <div>CreateTeamForm</div>
+  )
+}
 
-export default SettingForm;
+export default CreateTeamForm

@@ -1,10 +1,13 @@
 "use client";
 
 import React from 'react';
+import TimelineHistorySection from '@/components/Sections/TimelineHistorySection';
 
 const TimelineHistoryPage = () => {
   return (
-    <div>TimelineHistoryPage</div>
+    <div className=''>
+      <TimelineHistorySection />
+    </div>
   );
 };
 
