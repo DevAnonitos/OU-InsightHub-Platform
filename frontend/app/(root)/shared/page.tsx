@@ -1,11 +1,18 @@
 "use client";
 
-import React from 'react'
+import React from 'react';
+import AuthAlertDialog from '@/components/Modal/AuthAlertDialog';
+import { useUserStore } from '@/components/Providers/UserProvider';
 
 const SharedPage = () => {
-  return (
-    <div>SharedPage</div>
-  )
-}
 
-export default SharedPage
+  const { user, isAuthenticated } = useUserStore((state) => state);
+
+  return (
+    <>
+      
+    </>
+  );
+};
+
+export default SharedPage;

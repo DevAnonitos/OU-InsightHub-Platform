@@ -37,7 +37,7 @@ const Navbar = () => {
         sticky top-0 left-0 right-0 z-50
         flex h-16 w-full
         items-center justify-between
-        border-b border-gray-300 bg-white p-6 font-semibold
+        border-b border-gray-300 dark:border-slate-700  bg-white p-6 font-semibold
         bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60
       "
     >

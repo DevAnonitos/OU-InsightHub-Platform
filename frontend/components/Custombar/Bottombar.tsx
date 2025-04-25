@@ -10,7 +10,7 @@ const Bottombar = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="w-full border-t border-gray-300 bg-background py-6">
+    <footer className="w-full border-t border-gray-300 dark:border-slate-700 bg-background py-6">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
