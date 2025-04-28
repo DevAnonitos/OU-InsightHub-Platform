@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import ProfilePanel from './ProfilePanel';
 import { Tabs, TabsTrigger, TabsList } from '@/components/ui/tabs';
 
 const ProfileTab = () => {

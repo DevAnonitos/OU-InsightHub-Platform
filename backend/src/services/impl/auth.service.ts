@@ -1,4 +1,5 @@
 import { ERole } from "@/enums/role.enum";
+import { EProvider } from "@/enums/provider.enum";
 
 import roleService from "./role.service";
 import tokenService from "./token.service";
@@ -22,6 +23,7 @@ class AuthService {
     
         const user = await userRepository.create({
             ...data,
+            provider: EProvider.APP,
             password: hashedPassword,
         });
 
@@ -87,6 +89,7 @@ class AuthService {
             user = await userRepository.create({
                 email,
                 username: name,
+                provider: EProvider.GOOGLE,
                 avatarUrl: picture,
                 googleId: sub,
             });

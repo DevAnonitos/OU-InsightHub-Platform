@@ -21,6 +21,11 @@ enum RoleName {
   SUB_ADMIN
 }
 
+enum AuthProvider {
+  APP
+  GOOGLE
+}
+
 enum PermissionAction {
   READ
   CREATE
@@ -32,6 +37,22 @@ enum StatusAction {
   PENDING
   APPROVED
   REJECTED
+}
+
+enum NotificationStatus {
+  READ
+  UNREAD
+  ARCHIVED
+}
+
+enum NotificationType {
+  INFO
+  ALERT
+  ERROR
+  CUSTOM
+  SUCCESS
+  WARNING
+  MESSAGE
 }
 
 // Config Model Schema
@@ -47,12 +68,16 @@ model User {
   gender           String?
   avatarUrl        String?
   description      String?
+  provider         AuthProvider @default(APP)
   isVerified       Boolean      @default(false)
 
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
  
   userRoles        UserRole[]
+
+  notificationsReceived  Notification[]             
+  notificationsSent      Notification[] @relation("actorNotifications")
 
   @@index([username, email])
 }
@@ -141,4 +166,23 @@ model Comment {
 
 model Notification {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  
+  recipientId      String       @db.ObjectId
+  recipient        User         @relation(fields: [recipientId], references: [id])
+
+  actorId          String?      @db.ObjectId
+  actor            User?        @relation("actorNotifications", fields: [actorId], references: [id])
+
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  title            String
+  message          String
+  type             NotificationType   @default(INFO)
+  status           NotificationStatus @default(UNREAD)
+
+  metadata         Json?
+
+  readAt           DateTime?
 }

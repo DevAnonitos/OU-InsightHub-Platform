@@ -1,17 +1,16 @@
 import { addDays, addHours, setHours, startOfDay, subDays } from "date-fns"
 import type { Event } from "@/types/calendar"
 
-// Generate random events for the calendar
+
 export function generateMockEvents(baseDate: Date): Event[] {
   const categories = ["work", "personal", "family", "holiday", "other"]
   const events: Event[] = []
 
-  // Generate events for the current month
   for (let i = 0; i < 20; i++) {
     const daysOffset = Math.floor(Math.random() * 30) - 15
     const eventDate = addDays(baseDate, daysOffset)
-    const startHour = 9 + Math.floor(Math.random() * 8) // Between 9 AM and 5 PM
-    const durationHours = 1 + Math.floor(Math.random() * 3) // 1-3 hours
+    const startHour = 9 + Math.floor(Math.random() * 8) 
+    const durationHours = 1 + Math.floor(Math.random() * 3) 
 
     const start = setHours(startOfDay(eventDate), startHour)
     const end = addHours(start, durationHours)
@@ -27,7 +26,6 @@ export function generateMockEvents(baseDate: Date): Event[] {
     })
   }
 
-  // Add some multi-day events
   events.push({
     id: "multi-day-1",
     title: "Conference",

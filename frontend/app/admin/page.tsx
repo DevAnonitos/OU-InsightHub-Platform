@@ -1,8 +1,12 @@
+"use client";
+
 import React from 'react';
 
 const AdminPage = () => {
   return (
-    <div>page</div>
+    <div>
+
+    </div>
   );
 };
 

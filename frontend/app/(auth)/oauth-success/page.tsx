@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 import { setAuthCookies } from '@/lib/actions/cookies';
 import { useRouter, useSearchParams } from 'next/navigation';
+import LoaderSpinner from '@/components/Loading/LoaderSpinner';
 import { useUserStore } from '@/components/Providers/UserProvider';
 
 const OAuthSuccessPage = () => {
@@ -20,20 +21,19 @@ const OAuthSuccessPage = () => {
 
     try {
       const user = JSON.parse(decodeURIComponent(userParam));
-      setUser(user); // Lưu user vào Zustand
-      router.replace("/"); // Chuyển hướng về trang chính
+      setUser(user);
+      router.replace("/");
     } catch (e) {
       console.error("Invalid user data", e);
       router.replace("/sign-in?error=invalid_user_data");
     }
   }, [params, router]);
 
-  return <div>Đang xử lý đăng nhập…</div>;
-
-
   return (
-    <div>Đang xử lý đăng nhập…</div>
-  )
-}
+    <div>
+      <LoaderSpinner />
+    </div>
+  );
+};
 
-export default OAuthSuccessPage
+export default OAuthSuccessPage;

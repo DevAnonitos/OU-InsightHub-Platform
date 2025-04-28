@@ -10,3 +10,7 @@ export const useCurrentUser = () => {
     retry: false,
   });
 }
+
+export const useGetUsers = () => {
+  return
+}

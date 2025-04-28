@@ -1,4 +1,3 @@
-import { prisma } from "@/configs/prisma.config";
 import { userRepository } from "@/repositories/user.repository";
 
 class UserService {

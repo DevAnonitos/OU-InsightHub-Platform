@@ -20,4 +20,4 @@ export function hashUserId(userId: string): string | null {
   }
   
   return userIdMappings[userId];
-}
+};

@@ -30,6 +30,8 @@ const ProfileUserPage = ({ params }: Props) => {
         {user?.username && (
           <ProfileHeader
               userId={user.id}
+              lastName={user.lastName}
+              firstName={user.firstName}
               userName={user.username}
               avatarUrl={user?.avatarUrl}
           />
