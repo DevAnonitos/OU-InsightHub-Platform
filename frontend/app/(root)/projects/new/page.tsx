@@ -3,6 +3,7 @@
 import React from 'react';
 import AuthAlertDialog from '@/components/Modal/AuthAlertDialog';
 import { useUserStore } from '@/components/Providers/UserProvider';
+import ResearchProjectForm from '@/components/Form/ResearchProjectForm';
 
 const NewProjectPage = () => {
 

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Bell } from "lucide-react"
 import { Badge } from "../ui/badge";
 import { Button } from "@/components/ui/button";
@@ -92,6 +93,7 @@ const mockNotifications: Notification[] = [
 ]
 
 export const NotificationDropdown = () => {
+  const router = useRouter();
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications)
   const [open, setOpen] = useState(false)
 
@@ -113,9 +115,8 @@ export const NotificationDropdown = () => {
   }
 
   const handleViewAll = () => {
-    // This would typically navigate to a notifications page
     console.log("View all notifications clicked")
-    // Example: router.push("/notifications")
+    router.push("/notifications")
     setOpen(false)
   }
 

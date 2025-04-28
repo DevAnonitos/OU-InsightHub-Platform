@@ -52,7 +52,7 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
                       <Link
                         prefetch={true}
                         href={item.url}
-                        scroll = {false}
+                        scroll = {true}
                         aria-label={item.description || item.title}
                         title={item.description || item.title}
                       >
@@ -84,7 +84,7 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
                           >
                             <Link
                               prefetch={true}
-                              scroll = {false}
+                              scroll = {true}
                               href={subItem.url}
                               aria-label={subItem.description || subItem.title}
                               title={subItem.description || subItem.title}
@@ -105,7 +105,7 @@ export function SidebarSection({ sectionId, label, items }: SidebarSectionProps)
                 >
                   <Link
                     prefetch={true}
-                    scroll = {false}
+                    scroll = {true}
                     href={item.url}
                     aria-label={item.description || item.title}
                     title={item.description || item.title}

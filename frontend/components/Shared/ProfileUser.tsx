@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getRandomColor } from "@/lib/utils";
 import { hashUserId } from "@/lib/utils/userIdHasher";
@@ -31,7 +31,9 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+
 import { useUserStore } from "../Providers/UserProvider";
+import { ActionStatusModal } from "../Modal/ActionStatusModal";
 
 interface ProfileUserProps {
   userId: string;
@@ -46,6 +48,9 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
 
   const { signOut } = useUserStore((state) => state);
 
+  const [isSignOutModalOpen, setSignOutModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const randomColor = useMemo(() => getRandomColor(), []);
 
   const fallbackInitial = userName?.charAt(0)?.toUpperCase() || "U";
@@ -55,44 +60,27 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
     router.push(`/profile/${hashedId}`);
   };
 
-  const handleSignOut = async () => {
-    await signOut();
-    router.push('/sign-in'); 
+  const handleSignOutConfirm = async () => {
+    try {
+      setIsLoading(true);
+      await signOut();
+      router.push('/sign-in');
+    } finally {
+      setIsLoading(false);
+      setSignOutModalOpen(false);
+    }
   }
 
   return (
-    <SidebarMenu>
-      <SidebarMenuItem>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              size="lg"
-              className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={avatarUrl || ""} alt={userName} />
-                <AvatarFallback 
-                  className="rounded-lg" 
-                  style={{ backgroundColor: avatarUrl ? "transparent" : randomColor }}
-                >
-                  {fallbackInitial}
-                </AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-semibold">{userName}</span>
-                <span className="truncate text-xs">{email}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
-          </DropdownMenuTrigger>
-
-          <DropdownMenuContent
-            className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-            align="end"
-            sideOffset={4}
-          >
-            <DropdownMenuLabel className="p-0 font-normal">
-              <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+    <>
+      <SidebarMenu>
+        <SidebarMenuItem>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <SidebarMenuButton
+                size="lg"
+                className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              >
                 <Avatar className="h-8 w-8 rounded-lg">
                   <AvatarImage src={avatarUrl || ""} alt={userName} />
                   <AvatarFallback 
@@ -104,47 +92,85 @@ const ProfileUser = ({ userId, userName, email, avatarUrl, usernameTag }: Profil
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <span className="truncate font-semibold">{userName}</span>
-                  <span className="truncate text-xs">{usernameTag || email}</span>
+                  <span className="truncate text-xs">{email}</span>
                 </div>
-              </div>
-            </DropdownMenuLabel>
+                <ChevronsUpDown className="ml-auto size-4" />
+              </SidebarMenuButton>
+            </DropdownMenuTrigger>
 
-            <DropdownMenuSeparator />
+            <DropdownMenuContent
+              className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+              align="end"
+              sideOffset={4}
+            >
+              <DropdownMenuLabel className="p-0 font-normal">
+                <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+                  <Avatar className="h-8 w-8 rounded-lg">
+                    <AvatarImage src={avatarUrl || ""} alt={userName} />
+                    <AvatarFallback 
+                      className="rounded-lg" 
+                      style={{ backgroundColor: avatarUrl ? "transparent" : randomColor }}
+                    >
+                      {fallbackInitial}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div className="grid flex-1 text-left text-sm leading-tight">
+                    <span className="truncate font-semibold">{userName}</span>
+                    <span className="truncate text-xs">{usernameTag || email}</span>
+                  </div>
+                </div>
+              </DropdownMenuLabel>
 
-            <DropdownMenuGroup>
-              <DropdownMenuItem>
-                <Sparkles />
-                Upgrade to Pro
+              <DropdownMenuSeparator />
+
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Sparkles />
+                  Upgrade to Pro
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuGroup>
+                <DropdownMenuItem onClick={handleAccountClick}>
+                  <BadgeCheck />
+                  Account
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCard />
+                  Billing
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Bell />
+                  Notifications
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+
+              <DropdownMenuSeparator />
+
+              <DropdownMenuItem onClick={() => setSignOutModalOpen(true)}>
+                <LogOut />
+                Log out
               </DropdownMenuItem>
-            </DropdownMenuGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </SidebarMenuItem>
+      </SidebarMenu>
 
-            <DropdownMenuSeparator />
-
-            <DropdownMenuGroup>
-              <DropdownMenuItem onClick={handleAccountClick}>
-                <BadgeCheck />
-                Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <CreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <Bell />
-                Notifications
-              </DropdownMenuItem>
-            </DropdownMenuGroup>
-
-            <DropdownMenuSeparator />
-
-            <DropdownMenuItem onClick={handleSignOut}>
-              <LogOut />
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      </SidebarMenuItem>
-    </SidebarMenu>
+      <ActionStatusModal
+        isOpen={isSignOutModalOpen}
+        title="Sign Out"
+        description="Are you sure you want to sign out?"
+        onConfirm={handleSignOutConfirm}
+        onCancel={() => setSignOutModalOpen(false)}
+        confirmText="Sign Out"
+        cancelText="Cancel"
+        isLoading={isLoading}
+        variant="destructive"
+        iconType="warning"
+      />
+    </>
   );
 };
 

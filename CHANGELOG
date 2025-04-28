@@ -1,1 +1,44 @@
-TEST_CHANGELOG
+# 📄 Changelog
+
+All notable changes to **OU Insight Hub** will be documented in this file.
+
+The project adheres to [Semantic Versioning](https://semver.org/) and follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
+---
+
+## [1.0.0] - 2025-04-26
+
+### Added
+- Initialized the **OU Insight Hub** project (Backend: Express.js, Prisma, MongoDB; Frontend: Next.js, React, TailwindCSS).
+- Implemented landing pages: Home, Events, and News.
+- Integrated Google and Facebook authentication.
+- Enabled users to create event/news posts pending admin approval.
+- Developed Admin Dashboard for managing user submissions.
+- Added user role and admin role management.
+- Implemented "Save Post" feature for users.
+- Added notification system for approved posts.
+
+### Changed
+- Optimized page load speed with lazy loading for images and data preloading strategies.
+- Standardized API structure between frontend and backend following RESTful best practices.
+
+### Fixed
+- Resolved login failure issues caused by temporary connection loss.
+- Fixed mobile responsiveness issues on small screen devices.
+
+---
+
+## [1.1.0] - Upcoming
+
+### Added
+- Nested comment system (threaded comments) for event posts.
+- User and post statistics dashboard for admin management.
+- Real-time notification system using Socket.IO.
+- Light and dark theme toggle for the entire platform.
+- Post search functionality by keywords.
+
+---
+
+> 📢 **Note:**  
+> This changelog will be updated regularly to reflect all ongoing improvements, fixes, and new features as OU Insight Hub evolves.
+

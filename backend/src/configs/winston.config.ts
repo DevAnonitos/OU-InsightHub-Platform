@@ -28,7 +28,10 @@ const devFormat = combine(
   timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }),
   errors({ stack: true }),
   colorize({ all: true }),
-  printf((info) => `${info.timestamp} ${info.level}: ${info.stack || info.message}`)
+  printf((info) => {
+    const service = info.service ? `[${info.service}]` : "";
+    return `${info.timestamp} ${info.level}: ${service} ${info.stack || info.message}`;
+  })
 );
 
 const prodFormat = combine(

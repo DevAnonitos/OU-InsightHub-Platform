@@ -2,11 +2,13 @@
 
 import React from 'react';
 import ProfileAvatar from './ProfileAvatar';
+import { useRouter } from 'next/navigation';
 import { SquarePen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 
 interface ProfileHeaderProps {
+  userId: string;
   userName: string;
   avatarUrl?: string;
   roles?: [];
@@ -16,7 +18,11 @@ const ProfileHeader = ({
   userName, 
   avatarUrl,
   roles, 
+  userId,
 }: ProfileHeaderProps) => {
+
+  const router = useRouter();
+
   return (
     <div 
       className='flex flex-col sm:flex-row items-center sm:items-start gap-6 
@@ -37,7 +43,7 @@ const ProfileHeader = ({
         </div>
       </div>
 
-      <Button className="border border-gray-500" variant="outline">
+      <Button className="border border-gray-500" variant="outline" onClick={() => router.push(`/profile/${userId}/edit`)}>
           <SquarePen />
           Edit Profile
       </Button>

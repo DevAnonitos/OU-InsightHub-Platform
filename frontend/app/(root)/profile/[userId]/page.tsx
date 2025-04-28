@@ -29,6 +29,7 @@ const ProfileUserPage = ({ params }: Props) => {
       <div className='container px-4 md:px-6 w-full mx-auto'>
         {user?.username && (
           <ProfileHeader
+              userId={user.id}
               userName={user.username}
               avatarUrl={user?.avatarUrl}
           />

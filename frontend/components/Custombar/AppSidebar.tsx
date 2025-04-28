@@ -41,7 +41,7 @@ export function AppSidebar() {
 
         <div className="w-full mt-4">
           <Button variant="outline" className="w-full justify-start gap-2" asChild>
-            <Link href="/search" aria-label="Search all resources">
+            <Link href="/search" scroll={true} prefetch={true} aria-label="Search all resources">
               <Search className="h-4 w-4" />
               <span>Search Resources...</span>
             </Link>
@@ -63,7 +63,7 @@ export function AppSidebar() {
 
         <SidebarGroup className="dark:bg-slate-950">
           <Button variant="outline" className="w-full justify-start mt-4 gap-2 text-primary" asChild>
-            <Link href="/projects/new" aria-label="Create a new research project">
+            <Link href="/projects/new" scroll={true} prefetch={true} aria-label="Create a new research project">
               <Plus className="h-4 w-4" />
               <span>New Research Project</span>
             </Link>

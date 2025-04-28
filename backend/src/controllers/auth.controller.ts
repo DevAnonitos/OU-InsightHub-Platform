@@ -1,3 +1,4 @@
+import { authLogger } from "@/loggers";
 import { Request, Response } from "express";
 import authService from "@/services/impl/auth.service";
 import { responseHandler } from "@/handlers/response.handler";
@@ -7,8 +8,12 @@ import { signInSchema, signUpSchema } from "@/libs/schemas/auth.schema";
 export const signIn = async (req: Request, res: Response) => {
     try {
         const parsed = signInSchema.safeParse(req.body);
-        if(!parsed.success) return responseHandler.badRequest(res, parsed.error.message);
+        if(!parsed.success) {
+            authLogger.warn("SignIn validation failed", { errors: parsed.error.errors, body: req.body });
+            return responseHandler.badRequest(res, parsed.error.message);
+        }
         const { user, tokens}  = await authService.loginAccount(parsed.data);
+        authLogger.info("User signed in successfully", { userId: user.id, email: user.email });
         return responseHandler.success(res, {
             user,
             tokens,
