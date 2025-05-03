@@ -6,9 +6,9 @@
   "scripts": {
     "dev:cluster": "nodemon",
     "dev:single": "nodemon --exec ts-node ./src/server.ts",
-    "start": "node dist/cluster.js",
+    "start": "node -r tsconfig-paths/register dist/cluster.js",
     "start:single": "node dist/server.js",
-    "build": "tsc",
+    "build": "tsc && tsc-alias",
     "test:report": "jest --coverage",
     "test:html": "jest --coverage && open test-report/report.html"
   },
@@ -32,11 +32,13 @@
     "helmet": "^8.1.0",
     "ioredis": "^5.6.0",
     "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "morgan": "^1.10.0",
     "nodemailer": "^6.10.0",
     "socket.io": "^4.8.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
+    "tsconfig-paths": "^4.2.0",
     "winston": "^3.17.0",
     "zod": "^3.24.3"
   },
@@ -50,6 +52,7 @@
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.9",
+    "@types/mocha": "^10.0.10",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.13.11",
     "@types/nodemailer": "^6.4.17",
@@ -63,7 +66,10 @@
     "supertest": "^7.1.0",
     "ts-jest": "^29.3.1",
     "ts-node": "^10.9.2",
-    "tsconfig-paths": "^4.2.0",
+    "tsc-alias": "^1.8.15",
     "typescript": "^5.8.2"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }

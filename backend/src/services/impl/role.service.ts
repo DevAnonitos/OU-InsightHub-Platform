@@ -22,7 +22,7 @@ class RoleService {
     async getUserRoles(userId: string): Promise<string[]> {
         const userRoles = await userRoleRepository.getById(userId);
     
-        return userRoles.map((ur) => ur.role.name);
+        return userRoles.map((ur: any) => ur.role.name);
     };
   }
   

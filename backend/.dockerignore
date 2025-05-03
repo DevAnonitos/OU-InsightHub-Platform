@@ -9,3 +9,5 @@ coverage
 test-report
 .next
 .swc
+.dist
+*.log
