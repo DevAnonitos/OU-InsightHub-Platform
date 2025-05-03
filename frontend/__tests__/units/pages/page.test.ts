@@ -12,7 +12,8 @@ import ForgotPassword from "@/app/(auth)/forgot-password/page";
 import AdminPage from "@/app/admin/page";
 import ManagementPage from "@/app/admin/management-users/page";
 
-import { render } from "@testing-library/react";
+import ProfileUserPage from "@/app/(root)/profile/[userId]/page";
+
 
 const pages = [
   { name: "Home Page", component: HomePage },
@@ -26,6 +27,7 @@ const pages = [
   { name: "Forgot Password Page", component: ForgotPassword },
   { name: "Admin Page", component: AdminPage },
   { name: "Management Page", component: ManagementPage },
+  { name: "Profile User Page", component: ProfileUserPage },
 ];
 
 describe("Page Component", () => {

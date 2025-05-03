@@ -14,6 +14,8 @@ exports[`Page Component Home Page Should be Home Page Snapshot 1`] = `[Function]
 
 exports[`Page Component Management Page Should be Management Page Snapshot 1`] = `[Function]`;
 
+exports[`Page Component Profile User Page Should be Profile User Page Snapshot 1`] = `[Function]`;
+
 exports[`Page Component Search Page Should be Search Page Snapshot 1`] = `[Function]`;
 
 exports[`Page Component Sign In Page Should be Sign In Page Snapshot 1`] = `[Function]`;
