@@ -17,6 +17,7 @@ const queryClient = new QueryClient({
     queries: {
       staleTime: 1000 * 60 * 5,
       retry: 0,
+      refetchOnWindowFocus: false,
     },
   }
 });
@@ -26,7 +27,6 @@ const QueryProvider = ({ children }: QueryProviderProps) => {
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Chỉ chạy ở client
     const persister = createSyncStoragePersister({
       storage: window.sessionStorage,
     });

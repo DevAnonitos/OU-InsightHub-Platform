@@ -82,13 +82,15 @@ class AuthService {
         const tokens = await exchangeCodeForTokens(code);
         const payload = await verifyGoogleIdToken(tokens?.id_token!);
 
-        const { email, name, picture, sub } = payload;
+        const { email, name, picture, sub, given_name, family_name } = payload;
 
         let user = await userRepository.findByEmail(email!);
         if(!user) {
             user = await userRepository.create({
                 email,
                 username: name,
+                firstName: given_name,
+                lastName: family_name,
                 provider: EProvider.GOOGLE,
                 avatarUrl: picture,
                 googleId: sub,

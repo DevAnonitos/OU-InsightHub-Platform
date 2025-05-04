@@ -4,7 +4,9 @@ LABEL author="devanonitos"
 
 WORKDIR /app
 
-COPY package*.json tsconfig*.json ./
+COPY package*.json ./
+COPY tsconfig*.json ./
+COPY prisma ./prisma 
 
 RUN npm ci
 
@@ -19,7 +21,9 @@ COPY . .
 
 ENV NODE_ENV="production"
 
-RUN npm run build # <-- Builds TS, creates /app/dist
+RUN npm run build
+
+RUN npx prisma generate
 
 # Stage 3: Build run Image
 FROM node:22.14.0-alpine3.20 AS run
@@ -29,10 +33,11 @@ WORKDIR /app
 
 USER node
 
-COPY --from=build --chown=node:node /app/dist ./dist
-COPY --from=build --chown=node:node /app/node_modules ./node_modules 
-COPY --from=build --chown=node:node /app/package.json ./package.json
-COPY --from=build --chown=node:node /app/tsconfig.json ./tsconfig.json 
+COPY --from=build --chown=node:node /app/dist ./dist   
+COPY --from=build --chown=node:node /app/tsconfig.json ./tsconfig.json                
+COPY --from=build --chown=node:node /app/node_modules ./node_modules     
+COPY --from=build --chown=node:node /app/package.json ./package.json     
+COPY --from=build --chown=node:node /app/prisma ./prisma     
 
 ENV NODE_ENV="production"
 

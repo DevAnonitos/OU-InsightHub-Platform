@@ -1,5 +1,9 @@
 import { prisma } from "@/configs/prisma.config";
 
+export const create = (data: any) => {
+  return;
+};
+
 export const findAll =  () => {
   return;
 };
@@ -13,6 +17,8 @@ export const removeAll = () => {
 };
 
 export const notificationRepository = {
+  create,
   findAll,
   removeById,
+  removeAll,
 };
