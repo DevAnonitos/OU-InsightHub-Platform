@@ -75,9 +75,15 @@ model User {
   updatedAt        DateTime     @updatedAt
  
   userRoles        UserRole[]
+  posts            Post[]       @relation("authorPosts")
+  forumsCreated    Forum[]      @relation("creatorForums")
+  comments         Comment[]    @relation("authorComments")
 
   notificationsReceived  Notification[]             
   notificationsSent      Notification[] @relation("actorNotifications")
+
+  sentMessages      Message[] @relation("sentMessages")
+  receivedMessages  Message[] @relation("receivedMessages")
 
   @@index([username, email])
 }
@@ -130,28 +136,75 @@ model RolePermission {
 
 model Post {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  title            String
+  content          String?
+  thumbnailUrl     String?
+  status           StatusAction @default(PENDING)
+
+  authorId         String       @db.ObjectId
+  author           User         @relation("authorPosts", fields: [authorId], references: [id])
+
+  tags             Tag[]        @relation("postTags")
+  
+  categoriesIds    String[]     @db.ObjectId
+  categories       Category[]   @relation("categoryPosts", fields: [categoriesIds], references: [id])
+
+  forumId          String?      @db.ObjectId
+  forum            Forum?       @relation("forumPosts", fields: [forumId], references: [id])
+
+  comments         Comment[]    @relation("postComments")
 
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
 }
 
-model PaperDocument {
-  id               String       @id @default(auto()) @map("_id") @db.ObjectId
+// model PaperDocument {
+//   id               String       @id @default(auto()) @map("_id") @db.ObjectId
 
-  createdAt        DateTime     @default(now())
-  updatedAt        DateTime     @updatedAt
-}
+//   createdAt        DateTime     @default(now())
+//   updatedAt        DateTime     @updatedAt
+// }
 
 model Tag {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  name             String       @unique
+
+  postId          String       @db.ObjectId
+  post            Post         @relation("postTags", fields: [postId], references: [id])
 }
 
 model Category {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  name             String       @unique
+  
+  postIds          String[]     @db.ObjectId
+  posts            Post[]       @relation("categoryPosts", fields: [postIds], references: [id])
+
+  metatdata        Json?
+
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
 }
 
 model Forum {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+  name             String       @unique
+  slug             String       @unique
+  description      String?
+
+  metadata         Json?
+  isDeleted        Boolean      @default(false)
+  status           StatusAction @default(PENDING)
+
+  createdById      String       @db.ObjectId
+  createdBy        User         @relation("creatorForums", fields: [createdById], references: [id])
+
+  posts            Post[]       @relation("forumPosts")
+  comments         Comment[]    @relation("forumComments")
+
+  parentId         String?      @db.ObjectId
+  subForums        Forum[]      @relation("forumHierarchy")
+  parent           Forum?       @relation("forumHierarchy", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
@@ -159,6 +212,26 @@ model Forum {
 
 model Comment {
   id               String       @id @default(auto()) @map("_id") @db.ObjectId
+
+  content          String
+  isDeleted        Boolean      @default(false)
+
+  commentCount     Int          @default(0)       
+  metadata         Json?
+
+  postId           String       @db.ObjectId
+  post             Post         @relation("postComments", fields: [postId], references: [id])
+
+  authorId         String       @db.ObjectId
+  author           User         @relation("authorComments", fields: [authorId], references: [id])
+
+  forumId          String?      @db.ObjectId
+  forum            Forum?       @relation("forumComments", fields: [forumId], references: [id])
+
+  parentId         String?      @db.ObjectId 
+  replies          Comment[]    @relation("commentReplies")
+  parent           Comment?     @relation("commentReplies", fields: [parentId], references: [id],onDelete: NoAction, onUpdate: NoAction )
+
 
   createdAt        DateTime     @default(now())
   updatedAt        DateTime     @updatedAt
@@ -185,4 +258,26 @@ model Notification {
   metadata         Json?
 
   readAt           DateTime?
+}
+
+model Message {
+  id             String      @id @default(auto()) @map("_id") @db.ObjectId
+  content        String
+  isRead         Boolean     @default(false)
+  sentAt         DateTime    @default(now())
+
+  metadata       Json?
+  attachmentUrl  String?
+
+  deletedBySender   Boolean  @default(false)
+  deletedByReceiver Boolean  @default(false)
+
+  senderId       String      @db.ObjectId
+  sender         User        @relation("sentMessages", fields: [senderId], references: [id])
+
+  receiverId     String      @db.ObjectId
+  receiver       User        @relation("receivedMessages", fields: [receiverId], references: [id])
+
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
 }
